@@ -8,6 +8,6 @@
         "app/*.js"
     ],
     "exclude": [
-        "app/templates/**",
+        "app/templates/**"
     ]
 }
