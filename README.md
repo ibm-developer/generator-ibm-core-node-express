@@ -1,4 +1,4 @@
-# IBM Cloud Enablement Generator
+# IBM Core Node Express Generator
 
 [![Bluemix powered][img-bluemix-powered]][url-bluemix]
 [![Travis][img-travis-master]][url-travis-master]
@@ -44,7 +44,7 @@ npm install -g generator-ibm-core-node-express
 
 Following command line arguments are supported
  
-*  `--bluemix='{"name":\"<project name>","backendPlatform":"NODE"}'`. 
+*  `--bluemix='{"name":"<project-name>","backendPlatform":"NODE"}'`. 
 * You will need at least a name and backendPlatform to run it locally.
 *  You can alternatively supply a local file containing compatible JSON object by using `--bluemix file:path/to/file.json`
 
@@ -61,7 +61,7 @@ npm link
 In a separate directory invoke the generator via
 
 ```
-yo ibm-cloud-enablement --bluemix  
+yo ibm-core-node-express --bluemix='{"name":"<project-name>","backendPlatform":"NODE"}'  
 ```
 
 ## Publishing Changes
@@ -73,4 +73,3 @@ Once you are finished with your changes, run `npm test` to make sure all tests p
 Do a pull request against `development`, make sure the build passes. A team member will review and merge your pull request. 
 Once merged to development, the version will be auto-incremented.
 Do a pull request against master, once that PR is reviewed and merged, a new version will be published.
-
