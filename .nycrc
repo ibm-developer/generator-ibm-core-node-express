@@ -1,9 +1,9 @@
 {
     "check-coverage": true,
-    "statements": 84,
-    "branches": 73,
-    "functions": 92,
-    "lines": 84,
+    "statements": 85,
+    "branches": 72,
+    "functions": 100,
+    "lines": 85,
     "include": [
         "app/*.js"
     ],

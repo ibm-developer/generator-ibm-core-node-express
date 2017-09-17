@@ -288,6 +288,49 @@ describe('core-node-express:app integration test with isDeployableContainer spec
 	});
 
 });
+
+describe('core-node-express:app integration test with MS spec', function() {
+	// Express build is slow so we need to set a longer timeout for the test
+	this.timeout(150000);
+
+	before(function () {
+		// Mock the options, set up an output folder and run the generator
+		return helpers.run(path.join( __dirname, '../app'))
+			.withOptions({
+				spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort, applicationType: "MS" }),
+				bluemix: JSON.stringify({name: PROJECT_NAME})
+			})
+			.toPromise(); // Get a Promise back when the generator finishes
+	});
+
+	it('should have chart path  in cli-config.xml', function() {
+		let reg = new RegExp('chart/' + PROJECT_NAME.toLowerCase());
+		assert.fileContent(common.file.cliconfig, reg);
+	});
+
+});
+
+describe('core-node-express:app integration test with BLANK spec', function() {
+	// Express build is slow so we need to set a longer timeout for the test
+	this.timeout(150000);
+
+	before(function () {
+		// Mock the options, set up an output folder and run the generator
+		return helpers.run(path.join( __dirname, '../app'))
+			.withOptions({
+				spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort, applicationType: "BLANK" }),
+				bluemix: JSON.stringify({name: PROJECT_NAME})
+			})
+			.toPromise(); // Get a Promise back when the generator finishes
+	});
+
+	it('should have chart path  in cli-config.xml', function() {
+		let reg = new RegExp('chart/' + PROJECT_NAME.toLowerCase());
+		assert.fileContent(common.file.cliconfig, reg);
+	});
+
+});
+
 /* TODO:
 describe('core-node-express:app integration test with openApiServices', function() {
 

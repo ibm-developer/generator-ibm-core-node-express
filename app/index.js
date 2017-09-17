@@ -62,12 +62,13 @@ module.exports = class extends Generator {
 			'resourceFormatter': helpers.resourceNameFromPath
 		}
 		*/
+		/* TODO: 
 		if (this.options.bluemix && this.options.bluemix.openApiServers && this.options.bluemix.openApiServers[0].spec) {
-			/* TODO: let openApiDocumentBytes = typeof this.options.bluemix.openApiServers[0].spec === 'object'
+			let openApiDocumentBytes = typeof this.options.bluemix.openApiServers[0].spec === 'object'
 				? JSON.stringify(this.options.bluemix.openApiServers[0].spec)
 				: this.options.bluemix.openApiServers[0].spec;
-			*/
-			return '' // TODO: swaggerize.parse(openApiDocumentBytes, formatters)
+			
+			return swaggerize.parse(openApiDocumentBytes, formatters)
 			.then(response => {
 				this.options.loadedApi = response.loaded;
 				this.options.parsedSwagger = response.parsed;
@@ -77,11 +78,13 @@ module.exports = class extends Generator {
 				throw err;
 			})
 		}
+		*/
 	}
 	
 	writing() {
 		this.fs.copyTpl(this.templatePath('server'), this.destinationPath('server'), this.options);
 
+		/* TODO: 
 		if (this.options.parsedSwagger) {
 			Object.keys(this.options.parsedSwagger.resources).forEach(function(resource) {
 				let context = {
@@ -93,6 +96,7 @@ module.exports = class extends Generator {
 				this.fs.copyTpl(this.templatePath('test/resource.js'), this.destinationPath(`test/${resource}.js`), context);
 			}.bind(this));
 		}
+		*/
 
 		this.fs.copyTpl(this.templatePath('test/test-server.js'), this.destinationPath('test/test-server.js'), this.options);
 		this.fs.copyTpl(this.templatePath('test/test-demo.js'), this.destinationPath('test/test-demo.js'), this.options);
