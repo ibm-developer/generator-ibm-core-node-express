@@ -6,5 +6,8 @@
     "lines": 84,
     "include": [
         "app/*.js"
+    ],
+    "exclude": [
+        "app/templates/**",
     ]
 }
