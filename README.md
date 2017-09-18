@@ -23,7 +23,7 @@
 [img-coveralls-master]: https://coveralls.io/repos/github/ibm-developer/generator-ibm-core-node-express/badge.svg
 [url-coveralls-master]: https://coveralls.io/github/ibm-developer/generator-ibm-core-node-express
 
-[img-codacy]: https://api.codacy.com/project/badge/Grade/a5893a4622094dc8920c8a372a8d3588?branch=master
+[img-codacy]: https://api.codacy.com/project/badge/Grade/a5893a4622094dc8920c8a372a8d3588?branch=development
 [url-codacy]: https://www.codacy.com/app/ibm-developer/generator-ibm-core-node-express
 
 ## Pre-requisites
