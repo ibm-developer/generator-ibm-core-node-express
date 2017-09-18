@@ -17,7 +17,7 @@
 [img-npm-downloads-monthly]: https://img.shields.io/npm/dm/generator-ibm-core-node-express.svg
 [img-npm-downloads-total]: https://img.shields.io/npm/dt/generator-ibm-core-node-express.svg
 
-[img-travis-master]: https://travis-ci.org/ibm-developer/generator-ibm-core-node-express.svg?branch=master
+[img-travis-master]: https://travis-ci.org/ibm-developer/generator-ibm-core-node-express.svg?branch=development
 [url-travis-master]: https://travis-ci.org/ibm-developer/generator-ibm-core-node-express/branches
 
 [img-coveralls-master]: https://coveralls.io/repos/github/ibm-developer/generator-ibm-core-node-express/badge.svg
