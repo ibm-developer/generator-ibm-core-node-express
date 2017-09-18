@@ -23,7 +23,6 @@
     "testkube": "npm run mocha test/test-kubernetes.js",
     "lint": "eslint .",
     "mocha": "nyc mocha --recursive",
-    "nyc": "nyc report --reporter=text-lcov",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "devDependencies": {
