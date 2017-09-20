@@ -8,29 +8,33 @@ before(function(done){
 });
 
 <% if (routes && basepath) {  %>
-describe('Testing <%- basepath %><%- routes[0].route%>',function(){
-  it('Testing GET for <%- routes[0].route%> route',function(done){
-    var responseString = '';
+<%  routes.forEach(function (route) { -%> 
+<%   if (route.method === 'get') { -%>
+      describe('Testing <%- basepath %><%- route.route%>',function(){
+        it('Testing GET for <%- route.route%> route',function(done){
+          var responseString = '';
 
-    var options = {
-      host: 'localhost',
-      port: process.env.PORT || 3000,
-      path: '<%- basepath %><%- routes[0].route%>'
-    };
+          var options = {
+            host: 'localhost',
+            port: process.env.PORT || 3000,
+            path: '<%- basepath %><%- route.route%>'
+          };
 
-    var callback = function(response){
-      response.on('data', function (chunk) {
-        responseString += chunk;
+          var callback = function(response){
+            response.on('data', function (chunk) {
+              responseString += chunk;
+            });
+
+            response.on('end', function () {
+              expect(responseString).to.equal('{}');
+              done();
+            });
+          };
+
+          http.request(options, callback).end();
+        });
       });
-
-      response.on('end', function () {
-        expect(responseString).to.equal('{}');
-        done();
-      });
-    };
-
-    http.request(options, callback).end();
-  });
-});
+<%   } -%>
+<%  }); -%>
 <% } %>
 
