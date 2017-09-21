@@ -7,17 +7,25 @@ before(function(done){
   this.timeout(10000);
 });
 
-<% if (routes && basepath) {  %>
+<% if (routes) {  %>
 <%  routes.forEach(function (route) { -%> 
 <%   if (route.method === 'get') { -%>
+<%     if(basepath) { -%>
       describe('Testing <%- basepath %><%- route.route%>',function(){
+<%     } else { -%>
+      describe('Testing <%- route.route%>',function(){
+<%     } -%>
         it('Testing GET for <%- route.route%> route',function(done){
           var responseString = '';
 
           var options = {
             host: 'localhost',
             port: process.env.PORT || 3000,
+            <% if (basepath) { -%>
             path: '<%- basepath %><%- route.route%>'
+            <% } else {-%>
+            path: '<%- route.route%>'
+            <% } -%>
           };
 
           var callback = function(response){
