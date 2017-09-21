@@ -17,7 +17,7 @@ const Bundle = require("./../package.json")
 const Log4js = require('log4js');
 const logger = Log4js.getLogger("generator-core-node-express");
 const helpers = require('../lib/helpers');
-const swaggerize = require('@arf/swaggerize');
+const swaggerize = require('ibm-openapi-support');
 const OPTION_BLUEMIX = "bluemix";
 const OPTION_SPEC = "spec";
 
@@ -49,8 +49,8 @@ module.exports = class extends Generator {
 
   initializing() {
     this.skipPrompt = true;
-		let bluemix_ok= this._sanitizeOption(this.options, OPTION_BLUEMIX);
-		let spec_ok= this._sanitizeOption(this.options, OPTION_SPEC);
+    let bluemix_ok= this._sanitizeOption(this.options, OPTION_BLUEMIX);
+    let spec_ok= this._sanitizeOption(this.options, OPTION_SPEC);
     if ( ! (bluemix_ok || spec_ok )) throw ("Must specify either bluemix or spec parameter");  
     let appName = this.options.bluemix.name || this.options.spec.appname;
     this.options.sanitizedAppName = this._sanitizeAppName(appName);
@@ -82,7 +82,7 @@ module.exports = class extends Generator {
 
     // micro service always gets swagger ui and no public 
     if(this.options.spec && this.options.spec.applicationType === 'MS') {
-        this.options.genSwagger= true; 
+      this.options.genSwagger= true; 
     }
 
   }
@@ -148,28 +148,28 @@ module.exports = class extends Generator {
   }
 
 	// return true if 'sanitized', false if missing, exception if bad data 
-	_sanitizeOption(options, name) {
-		let optionValue = options[name];
-		if (!optionValue) {
-			logger.error("Missing", name, "parameter");
-			return false; 
-		}
+  _sanitizeOption(options, name) {
+    let optionValue = options[name];
+    if (!optionValue) {
+      logger.error("Missing", name, "parameter");
+      return false; 
+    }
 
-		if (optionValue.indexOf("file:") === 0) {
-			let fileName = optionValue.replace("file:", "");
-			let filePath = this.destinationPath("./" + fileName);
-			logger.info("Reading", name, "parameter from local file", filePath);
-			this.options[name] = this.fs.readJSON(filePath);
-			return true; 
-		}
+    if (optionValue.indexOf("file:") === 0) {
+      let fileName = optionValue.replace("file:", "");
+      let filePath = this.destinationPath("./" + fileName);
+      logger.info("Reading", name, "parameter from local file", filePath);
+      this.options[name] = this.fs.readJSON(filePath);
+      return true; 
+    }
 
-		try {
-			this.options[name] = typeof(this.options[name]) === "string" ?
-				JSON.parse(this.options[name]) : this.options[name];
-			return true; 
-		} catch (e) {
-			logger.error(e);
-			throw name + " parameter is expected to be a valid stringified JSON object";
-		}
-	}
+    try {
+      this.options[name] = typeof(this.options[name]) === "string" ?
+      JSON.parse(this.options[name]) : this.options[name];
+      return true; 
+    } catch (e) {
+      logger.error(e);
+      throw name + " parameter is expected to be a valid stringified JSON object";
+    }   
+  }
 };
