@@ -10,7 +10,11 @@ module.exports = function(app, basepath) {
   })
 
 <%   }); -%>
+<% if (basepath) { -%>
   app.use(basepath, router);
+<% } else { -%>
+  app.use(router);
+<% } -%>
 <% } -%>
 }
 
