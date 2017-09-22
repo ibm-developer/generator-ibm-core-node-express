@@ -30,7 +30,7 @@ module.exports = class extends Generator {
     super(args, opts);
     logger.info("Package info ::", Bundle.name, Bundle.version);
 
-    // bluemix option for YaaS integration
+    //  bluemix option for YaaS integration
     this.argument(OPTION_BLUEMIX, {
       desc: 'Option for deploying with Bluemix. Stringified JSON.',
       required: false,
