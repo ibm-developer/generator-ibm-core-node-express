@@ -6,7 +6,7 @@ ENV PORT 3000
 WORKDIR "/app"
 
 # Install app dependencies
-COPY package.json package-lock.json /app/
+COPY package.json /app/
 RUN cd /app; npm install
 
 # Bundle app source
