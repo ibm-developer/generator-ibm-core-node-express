@@ -13,7 +13,7 @@
 
 'use strict';
 const Generator = require('yeoman-generator');
-const Bundle = require("./../package.json")
+const Bundle = require("./../package.json");
 const Log4js = require('log4js');
 const logger = Log4js.getLogger("generator-core-node-express");
 const helpers = require('../lib/helpers');
@@ -28,7 +28,10 @@ module.exports = class extends Generator {
 
   constructor(args, opts) {
     super(args, opts);
-    logger.info("Package info ::", Bundle.name, Bundle.version);
+    
+    if ( typeof opts.bluemix.quiet == "undefined" || ! opts.bluemix.quiet ) { 
+      logger.info("Package info ::", Bundle.name, Bundle.version);
+    } 
 
     //  bluemix option for YaaS integration
     this.argument(OPTION_BLUEMIX, {
@@ -127,8 +130,8 @@ module.exports = class extends Generator {
       this.fs.delete(this.destinationPath('server/routers/swagger.js'));
     }
 
-    // microservice does not serve up default page
-    if(this.options.spec && this.options.spec.applicationType === 'MS') {
+    // if there is swagger, there is no index page
+    if( this.options.genSwagger ) {
       this.fs.delete(this.destinationPath('server/routers/public.js'));
     }
     else { 
@@ -154,7 +157,7 @@ module.exports = class extends Generator {
       return false; 
     }
 
-    if (optionValue.indexOf("file:") === 0) {
+    if (typeof optionValue === "string" && optionValue.indexOf("file:") === 0) {
       let fileName = optionValue.replace("file:", "");
       let filePath = this.destinationPath("./" + fileName);
       logger.info("Reading", name, "parameter from local file", filePath);
