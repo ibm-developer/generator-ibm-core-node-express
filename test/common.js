@@ -28,6 +28,7 @@ exports.file = {
   index_router: 'server/routers/index.js',
   public: 'server/routers/public.js',
   index_service: 'server/services/index.js',
+  idt_js: 'idt.js',
   cliconfig: 'cli-config.yml'
 };
 

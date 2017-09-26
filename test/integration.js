@@ -69,7 +69,15 @@ describe('core-node-express:app integration test with custom spec', function () 
         "scripts": {
           "start": "node server/server.js",
           "start:cluster": "sl-run server/server.js",
-          "test": "nyc mocha"
+          "debug": "node --debug server/server.js",
+          "test": "nyc mocha",
+          "build": "npm run build:idt",
+          "idt:build": "node idt.js build",
+          "idt:test": "node idt.js test",
+          "idt:debug": "node idt.js debug",
+          "idt:run": "node idt.js run",
+          "idt:deploy": "node idt.js deploy",
+          "idt:install": "node idt.js install"
         },
         "dependencies": {
           "appmetrics-dash": "^3.3.2",

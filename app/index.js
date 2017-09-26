@@ -115,6 +115,7 @@ module.exports = class extends Generator {
     this.fs.copyTpl(this.templatePath('Dockerfile-tools'), this.destinationPath('Dockerfile-tools'), this.options);
     this.fs.copyTpl(this.templatePath('package.json'), this.destinationPath('package.json'), this.options);
     this.fs.copyTpl(this.templatePath('README.md'), this.destinationPath('README.md'), this.options);
+    this.fs.copyTpl(this.templatePath('idt.js'), this.destinationPath('idt.js'), this.options);
 
     // if project will have swagger doc, ensure swagger ui and api route
     if ( this.options.genSwagger ) {
