@@ -28,10 +28,6 @@ module.exports = class extends Generator {
 
   constructor(args, opts) {
     super(args, opts);
-    
-    if ( typeof opts.bluemix.quiet == "undefined" || ! opts.bluemix.quiet ) { 
-      logger.info("Package info ::", Bundle.name, Bundle.version);
-    } 
 
     //  bluemix option for YaaS integration
     this.argument(OPTION_BLUEMIX, {
@@ -55,10 +51,15 @@ module.exports = class extends Generator {
     let bluemix_ok= this._sanitizeOption(this.options, OPTION_BLUEMIX);
     let spec_ok= this._sanitizeOption(this.options, OPTION_SPEC);
     if ( ! (bluemix_ok || spec_ok )) throw ("Must specify either bluemix or spec parameter");  
+            
+    if ( typeof this.options.bluemix.quiet == "undefined" || ! this.options.bluemix.quiet ) { 
+      logger.info("Package info ::", Bundle.name, Bundle.version);
+    } 
+    
     let appName = this.options.bluemix.name || this.options.spec.appname;
     this.options.sanitizedAppName = this._sanitizeAppName(appName);
-    this.options.openApiFileType= "yaml"; // default 
     this.options.genSwagger= false; 
+    this.options.openApiFileType= "yaml"; // default 
 
     this.options.parsedSwagger = undefined;
     let formatters = {
@@ -74,7 +75,7 @@ module.exports = class extends Generator {
       .then(response => {
         this.options.loadedApi = response.loaded;
         this.options.parsedSwagger = response.parsed;
-        if ( this.options.loadedApi ) this.options.openApiFileType= "json";
+        this.options.openApiFileType= response.type; 
         this.options.genSwagger= true; 
       })
       .catch(err => {
@@ -119,8 +120,11 @@ module.exports = class extends Generator {
     if ( this.options.genSwagger ) {
       this.fs.copy(this.templatePath('public/swagger-ui'), this.destinationPath('public/swagger-ui'));
       // if open api doc provided, write it else write default 
+
       if ( this.options.loadedApi ) {
-        this.fs.writeJSON('public/swagger.json', this.options.loadedApi);
+        let yaml= this.options.bluemix.openApiServers[0].spec;
+        //this.fs.writeJSON('public/swagger.'+this.options.openApiFileType, this.options.loadedApi);
+        this.fs.write('public/swagger.'+this.options.openApiFileType, yaml);      
       } 
       else {
         this.fs.copyTpl(this.templatePath('public/swagger.yaml'), this.destinationPath('public/swagger.yaml'), this.options);
