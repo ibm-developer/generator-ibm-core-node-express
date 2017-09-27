@@ -68,12 +68,14 @@ describe('core-node-express:app integration test with custom spec', function () 
         },
         "scripts": {
           "start": "node server/server.js",
+          "start:cluster": "sl-run server/server.js",
           "test": "nyc mocha"
         },
         "dependencies": {
           "appmetrics-dash": "^3.3.2",
           "body-parser": "^1.17.2",
           "express": "^4.15.3",
+          "strong-supervisor": "^6.2.0",
           "log4js": "^1.1.1"
         },
         "devDependencies": {
