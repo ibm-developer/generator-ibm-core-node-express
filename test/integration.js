@@ -188,7 +188,7 @@ describe('core-node-express:app integration test with custom bluemix', function 
   });
 
   describe(common.file.server_js, () => {
-    it('contains appmetrics attach', () => {
+    it('contains appmetrics-dash attach', () => {
       assert.fileContent(common.file.server_js, "require('appmetrics-dash').attach();")
     });
   });
