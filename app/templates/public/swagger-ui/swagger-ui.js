@@ -2233,12 +2233,12 @@ window.Docs = {
             var hour = originalGetUTCHours(this);
             var minute = originalGetUTCMinutes(this);
             var second = originalGetUTCSeconds(this);
-            return dayName[day] + ', ' +
-                (date < 10 ? '0' + date : date) + ' ' +
-                monthName[month] + ' ' +
-                year + ' ' +
-                (hour < 10 ? '0' + hour : hour) + ':' +
-                (minute < 10 ? '0' + minute : minute) + ':' +
+            return dayName[day] + ', '
+                (date < 10 ? '0' + date : date) + ' '
+                monthName[month] + ' '
+                year + ' '
+                (hour < 10 ? '0' + hour : hour) + ':'
+                (minute < 10 ? '0' + minute : minute) + ':'
                 (second < 10 ? '0' + second : second) + ' GMT';
         }
     }, hasNegativeMonthYearBug || hasToUTCStringFormatBug);
@@ -2253,9 +2253,9 @@ window.Docs = {
             var date = this.getDate();
             var month = this.getMonth();
             var year = this.getFullYear();
-            return dayName[day] + ' ' +
-                monthName[month] + ' ' +
-                (date < 10 ? '0' + date : date) + ' ' +
+            return dayName[day] + ' '
+                monthName[month] + ' '
+                (date < 10 ? '0' + date : date) + ' '
                 year;
         }
     }, hasNegativeMonthYearBug || hasToDateStringFormatBug);
@@ -2276,15 +2276,15 @@ window.Docs = {
             var timezoneOffset = this.getTimezoneOffset();
             var hoursOffset = Math.floor(Math.abs(timezoneOffset) / 60);
             var minutesOffset = Math.floor(Math.abs(timezoneOffset) % 60);
-            return dayName[day] + ' ' +
-                monthName[month] + ' ' +
-                (date < 10 ? '0' + date : date) + ' ' +
-                year + ' ' +
-                (hour < 10 ? '0' + hour : hour) + ':' +
-                (minute < 10 ? '0' + minute : minute) + ':' +
-                (second < 10 ? '0' + second : second) + ' GMT' +
-                (timezoneOffset > 0 ? '-' : '+') +
-                (hoursOffset < 10 ? '0' + hoursOffset : hoursOffset) +
+            return dayName[day] + ' '
+                monthName[month] + ' '
+                (date < 10 ? '0' + date : date) + ' '
+                year + ' '
+                (hour < 10 ? '0' + hour : hour) + ':'
+                (minute < 10 ? '0' + minute : minute) + ':'
+                (second < 10 ? '0' + second : second) + ' GMT'
+                (timezoneOffset > 0 ? '-' : '+')
+                (hoursOffset < 10 ? '0' + hoursOffset : hoursOffset)
                 (minutesOffset < 10 ? '0' + minutesOffset : minutesOffset);
         };
         if (supportsDescriptors) {
@@ -2327,7 +2327,7 @@ window.Docs = {
             // the date time string format is specified in 15.9.1.15.
             var result = [month + 1, originalGetUTCDate(this), originalGetUTCHours(this), originalGetUTCMinutes(this), originalGetUTCSeconds(this)];
             year = (
-                (year < 0 ? '-' : (year > 9999 ? '+' : '')) +
+                (year < 0 ? '-' : (year > 9999 ? '+' : ''))
                 strSlice('00000' + Math.abs(year), (0 <= year && year <= 9999) ? -4 : -6)
             );
 
@@ -2337,8 +2337,8 @@ window.Docs = {
             }
             // pad milliseconds to have three digits.
             return (
-                year + '-' + arraySlice(result, 0, 2).join('-') +
-                'T' + arraySlice(result, 2).join(':') + '.' +
+                year + '-' + arraySlice(result, 0, 2).join('-')
+                'T' + arraySlice(result, 2).join(':') + '.'
                 strSlice('000' + originalGetUTCMilliseconds(this), -3) + 'Z'
             );
         }
@@ -2452,8 +2452,8 @@ window.Docs = {
             };
 
             // 15.9.1.15 Date Time String Format.
-            var isoDateExpression = new RegExp('^' +
-                '(\\d{4}|[+-]\\d{6})' + // four-digit year capture or sign +
+            var isoDateExpression = new RegExp('^'
+                '(\\d{4}|[+-]\\d{6})' + // four-digit year capture or sign
                                           // 6-digit extended year
                 '(?:-(\\d{2})' + // optional month capture
                 '(?:-(\\d{2})' + // optional day capture
@@ -2463,15 +2463,15 @@ window.Docs = {
                     '(?:' + // optional :seconds.milliseconds
                         ':(\\d{2})' + // seconds capture
                         '(?:(\\.\\d{1,}))?' + // milliseconds capture
-                    ')?' +
+                    ')?'
                 '(' + // capture UTC offset component
                     'Z|' + // UTC capture
                     '(?:' + // offset specifier +/-hours:minutes
                         '([-+])' + // sign capture
                         '(\\d{2})' + // hours offset capture
                         ':(\\d{2})' + // minutes offset capture
-                    ')' +
-                ')?)?)?)?' +
+                    ')'
+                ')?)?)?)?'
             '$');
 
             var months = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365];
@@ -2479,10 +2479,10 @@ window.Docs = {
             var dayFromMonth = function dayFromMonth(year, month) {
                 var t = month > 1 ? 1 : 0;
                 return (
-                    months[month] +
+                    months[month]
                     Math.floor((year - 1969 + t) / 4) -
-                    Math.floor((year - 1901 + t) / 100) +
-                    Math.floor((year - 1601 + t) / 400) +
+                    Math.floor((year - 1901 + t) / 100)
+                    Math.floor((year - 1601 + t) / 400)
                     365 * (year - 1970)
                 );
             };
@@ -2549,12 +2549,12 @@ window.Docs = {
                         day < (dayFromMonth(year, month + 1) - dayFromMonth(year, month))
                     ) {
                         result = (
-                            (dayFromMonth(year, month) + day) * 24 +
-                            hour +
+                            (dayFromMonth(year, month) + day) * 24
+                            hour
                             hourOffset * signOffset
                         ) * 60;
                         result = (
-                            (result + minute + minuteOffset * signOffset) * 60 +
+                            (result + minute + minuteOffset * signOffset) * 60
                             second
                         ) * 1000 + millisecond;
                         if (isLocalTime) {
@@ -2795,8 +2795,8 @@ window.Docs = {
                 }
 
                 var output = [];
-                var flags = (separator.ignoreCase ? 'i' : '') +
-                            (separator.multiline ? 'm' : '') +
+                var flags = (separator.ignoreCase ? 'i' : '')
+                            (separator.multiline ? 'm' : '')
                             (separator.unicode ? 'u' : '') + // in ES6
                             (separator.sticky ? 'y' : ''), // Firefox 3+ and ES6
                     lastLastIndex = 0,
@@ -2923,8 +2923,8 @@ window.Docs = {
 
     // ES5 15.5.4.20
     // whitespace from: http://es5.github.io/#x15.5.4.20
-    var ws = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
-        '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028' +
+    var ws = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003'
+        '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028'
         '\u2029\uFEFF';
     var zeroWidth = '\u200b';
     var wsRegexChars = '[' + ws + ']';
@@ -3852,18 +3852,18 @@ SwaggerClient.prototype.buildFromSpec = function (response) {
         var operationGroup = self[clientProperty];
 
         if (clientProperty !== tag) {
-          helpers.log('The \'' + tag + '\' tag conflicts with a SwaggerClient function/property name.  Use \'client.' +
+          helpers.log('The \'' + tag + '\' tag conflicts with a SwaggerClient function/property name.  Use \'client.'
                       clientProperty + '\' or \'client.apis.' + tag + '\' instead of \'client.' + tag + '\'.');
         }
 
         if (apiProperty !== tag) {
-          helpers.log('The \'' + tag + '\' tag conflicts with a SwaggerClient operation function/property name.  Use ' +
+          helpers.log('The \'' + tag + '\' tag conflicts with a SwaggerClient operation function/property name.  Use '
                       '\'client.apis.' + apiProperty + '\' instead of \'client.apis.' + tag + '\'.');
         }
 
         if (_.indexOf(reservedApiTags, operationId) > -1) {
-          helpers.log('The \'' + operationId + '\' operationId conflicts with a SwaggerClient operation ' +
-                      'function/property name.  Use \'client.apis.' + apiProperty + '._' + operationId +
+          helpers.log('The \'' + operationId + '\' operationId conflicts with a SwaggerClient operation '
+                      'function/property name.  Use \'client.apis.' + apiProperty + '._' + operationId
                       '\' instead of \'client.apis.' + apiProperty + '.' + operationId + '\'.');
 
           operationId = '_' + operationId;
@@ -8295,7 +8295,7 @@ function checked (length) {
   // Note: cannot use `length < kMaxLength` here because that fails when
   // length is NaN (which is otherwise coerced to zero.)
   if (length >= kMaxLength()) {
-    throw new RangeError('Attempt to allocate Buffer larger than maximum ' +
+    throw new RangeError('Attempt to allocate Buffer larger than maximum '
                          'size: 0x' + kMaxLength().toString(16) + ' bytes')
   }
   return length | 0
@@ -8919,14 +8919,14 @@ Buffer.prototype.readUInt32LE = function readUInt32LE (offset, noAssert) {
 
   return ((this[offset]) |
       (this[offset + 1] << 8) |
-      (this[offset + 2] << 16)) +
+      (this[offset + 2] << 16))
       (this[offset + 3] * 0x1000000)
 }
 
 Buffer.prototype.readUInt32BE = function readUInt32BE (offset, noAssert) {
   if (!noAssert) checkOffset(offset, 4, this.length)
 
-  return (this[offset] * 0x1000000) +
+  return (this[offset] * 0x1000000)
     ((this[offset + 1] << 16) |
     (this[offset + 2] << 8) |
     this[offset + 3])
@@ -12703,7 +12703,7 @@ Mark.prototype.getSnippet = function getSnippet(indent, maxLength) {
 
   snippet = this.buffer.slice(start, end);
 
-  return common.repeat(' ', indent) + head + snippet + tail + '\n' +
+  return common.repeat(' ', indent) + head + snippet + tail + '\n'
          common.repeat(' ', indent + this.position - start + head.length) + '^';
 };
 
@@ -13204,10 +13204,10 @@ var common = require('../common');
 var Type   = require('../type');
 
 var YAML_FLOAT_PATTERN = new RegExp(
-  '^(?:[-+]?(?:[0-9][0-9_]*)\\.[0-9_]*(?:[eE][-+][0-9]+)?' +
-  '|\\.[0-9_]+(?:[eE][-+][0-9]+)?' +
-  '|[-+]?[0-9][0-9_]*(?::[0-5]?[0-9])+\\.[0-9_]*' +
-  '|[-+]?\\.(?:inf|Inf|INF)' +
+  '^(?:[-+]?(?:[0-9][0-9_]*)\\.[0-9_]*(?:[eE][-+][0-9]+)?'
+  '|\\.[0-9_]+(?:[eE][-+][0-9]+)?'
+  '|[-+]?[0-9][0-9_]*(?::[0-5]?[0-9])+\\.[0-9_]*'
+  '|[-+]?\\.(?:inf|Inf|INF)'
   '|\\.(?:nan|NaN|NAN))$');
 
 function resolveYamlFloat(data) {
@@ -14492,7 +14492,7 @@ var nativeMax = Math.max;
  * @example
  *
  * var say = _.restParam(function(what, names) {
- *   return what + ' ' + _.initial(names).join(', ') +
+ *   return what + ' ' + _.initial(names).join(', ')
  *     (_.size(names) > 1 ? ', & ' : '') + _.last(names);
  * });
  *
@@ -17429,7 +17429,7 @@ var fnToString = Function.prototype.toString;
 var hasOwnProperty = objectProto.hasOwnProperty;
 
 /** Used to detect if a method is native. */
-var reIsNative = RegExp('^' +
+var reIsNative = RegExp('^'
   fnToString.call(hasOwnProperty).replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')
   .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
 );
@@ -18617,7 +18617,7 @@ function deprecate(callback, name, alternative) {
     return function () {
         if (typeof console !== "undefined" &&
             typeof console.warn === "function") {
-            console.warn(name + " is deprecated, use " + alternative +
+            console.warn(name + " is deprecated, use " + alternative
                          " instead.", new Error("").stack);
         }
         return callback.apply(callback, arguments);
@@ -19770,7 +19770,7 @@ function any(promises) {
             pendingCount--;
             if (pendingCount === 0) {
                 deferred.reject(new Error(
-                    "Can't get fulfillment value from any promise, all " +
+                    "Can't get fulfillment value from any promise, all "
                     "promises were rejected."
                 ));
             }
