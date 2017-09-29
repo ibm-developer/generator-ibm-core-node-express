@@ -1,4 +1,6 @@
 require('appmetrics-dash').attach();
+require('appmetrics-prometheus').attach();
+
 const appName = require('./../package').name;
 const express = require('express');
 const log4js = require('log4js');
@@ -14,12 +16,12 @@ require('./routers/index')(app);
 
 const port = process.env.PORT || localConfig.port;
 app.listen(port, function(){
-	logger.info(`<%= bluemix.name %> listening on http://localhost:${port}/appmetrics-dash`);
-	<% if( !genSwagger ){ %>
-	logger.info(`<%= bluemix.name %> listening on http://localhost:${port}`);
-	<% } %>
-	<% if( genSwagger ){ %>
-	logger.info(`OpenAPI (Swagger) spec is available at http://localhost:${port}/swagger/api`);
-	logger.info(`Swagger UI is available at http://localhost:${port}/explorer`);
-	<% } %>
+  logger.info(`<%= bluemix.name %> listening on http://localhost:${port}/appmetrics-dash`);
+  <% if( !genSwagger ){ %>
+  logger.info(`<%= bluemix.name %> listening on http://localhost:${port}`);
+  <% } %>
+  <% if( genSwagger ){ %>
+  logger.info(`OpenAPI (Swagger) spec is available at http://localhost:${port}/swagger/api`);
+  logger.info(`Swagger UI is available at http://localhost:${port}/explorer`);
+  <% } %>
 });

@@ -69,10 +69,19 @@ describe('core-node-express:app integration test with custom spec', function () 
         "scripts": {
           "start": "node server/server.js",
           "start:cluster": "sl-run server/server.js",
-          "test": "nyc mocha"
+          "debug": "node --debug server/server.js",
+          "test": "nyc mocha",
+          "build": "npm run build:idt",
+          "idt:build": "node idt.js build",
+          "idt:test": "node idt.js test",
+          "idt:debug": "node idt.js debug",
+          "idt:run": "node idt.js run",
+          "idt:deploy": "node idt.js deploy",
+          "idt:install": "node idt.js install"
         },
         "dependencies": {
           "appmetrics-dash": "^3.3.2",
+          "appmetrics-prometheus": "^0.0.2",
           "body-parser": "^1.17.2",
           "express": "^4.15.3",
           "strong-supervisor": "^6.2.0",
@@ -155,6 +164,7 @@ describe('core-node-express:app integration test with custom bluemix', function 
         },
         "dependencies": {
           "appmetrics-dash": "^3.3.2",
+          "appmetrics-prometheus": "^0.0.2",
           "body-parser": "^1.17.2",
           "express": "^4.15.3",
           "log4js": "^1.1.1"
@@ -182,6 +192,18 @@ describe('core-node-express:app integration test with custom bluemix', function 
   describe(common.file.server_js, () => {
     it('contains custom app name', () => {
       assert.fileContent(common.file.server_js, 'logger.info(`ProjectName listening on http://localhost:${port}`);')
+    });
+  });
+
+  describe(common.file.server_js, () => {
+    it('contains appmetrics-dash attach', () => {
+      assert.fileContent(common.file.server_js, "require('appmetrics-dash').attach();")
+    });
+  });
+
+  describe(common.file.server_js, () => {
+    it('contains appmetrics-prometheus attach', () => {
+      assert.fileContent(common.file.server_js, "require('appmetrics-prometheus').attach();")
     });
   });
 
@@ -237,6 +259,7 @@ describe('core-node-express:app integration test with custom bluemix and spec', 
         },
         "dependencies": {
           "appmetrics-dash": "^3.3.2",
+          "appmetrics-prometheus": "^0.0.2",
           "body-parser": "^1.17.2",
           "express": "^4.15.3",
           "log4js": "^1.1.1"
