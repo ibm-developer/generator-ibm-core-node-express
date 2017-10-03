@@ -295,6 +295,12 @@ describe('core-node-express:app integration test with custom bluemix and spec', 
       assert.fileContent(common.file.gitignore, 'node_modules');
     });
   });
+
+  describe(common.file.dockerignore, function () {
+    it('contains node_modules', function () {
+      assert.fileContent(common.file.dockerignore, 'node_modules');
+    });
+  });
 });
 
 describe('core-node-express:app integration test with isDeployableContainer spec', function() {

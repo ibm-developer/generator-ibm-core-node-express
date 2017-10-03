@@ -110,6 +110,7 @@ module.exports = class extends Generator {
     this.fs.copyTpl(this.templatePath('test/test-server.js'), this.destinationPath('test/test-server.js'), this.options);
     this.fs.copyTpl(this.templatePath('test/test-demo.js'), this.destinationPath('test/test-demo.js'), this.options);
     this.fs.copyTpl(this.templatePath('_gitignore'), this.destinationPath('.gitignore'), this.options);
+    this.fs.copyTpl(this.templatePath('_dockerignore'), this.destinationPath('.dockerignore'), this.options);
     this.fs.copyTpl(this.templatePath('cli-config.yml'), this.destinationPath('cli-config.yml'), this.options);
     this.fs.copyTpl(this.templatePath('Dockerfile'), this.destinationPath('Dockerfile'), this.options);
     this.fs.copyTpl(this.templatePath('Dockerfile-tools'), this.destinationPath('Dockerfile-tools'), this.options);
