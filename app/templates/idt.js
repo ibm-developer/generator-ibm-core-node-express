@@ -58,7 +58,7 @@ function runIDT(args) {
   cp.execSync(cmd, {stdio: 'inherit'});
 }
 
-// Download the IDT installer script and trigger runIDT().
+// Download the IDT installer script and trigger runInstaller().
 function downloadInstaller(cb) {
   const url = win ?
     'https://ibm.biz/yeoman-idt-win-install' :
@@ -77,7 +77,7 @@ function downloadInstaller(cb) {
     .on('finish', () => runInstaller(fileName, cb));
 }
 
-// Run the installer script and trigger callback (cb).
+// Run the installer script and trigger optional callback (cb).
 function runInstaller(fileName, cb) {
   const shell = win ? 'powershell.exe' : 'bash';
 
@@ -85,5 +85,5 @@ function runInstaller(fileName, cb) {
   console.log(`Now running: ${shell} ${filePath}`);
 
   cp.spawnSync(shell, [filePath], {stdio: 'inherit'});
-  cb();
+  typeof cb === 'function' && cb();
 }
