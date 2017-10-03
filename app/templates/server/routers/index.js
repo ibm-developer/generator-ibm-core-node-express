@@ -11,7 +11,7 @@ module.exports = function(app){
      if( genSwagger ){ %>
     require('./swagger')(app);
   <% } 
-     if ( !parsedSwagger ) {%>
+     if ( !parsedSwagger &&  (typeof spec === 'undefined' || (typeof spec !== 'undefined' && spec.applicationType !== 'MS'))) {%>
     require('./public')(app);
   <% }
      if(typeof spec === 'undefined' || spec.applicationType !== 'BLANK'){ %>
