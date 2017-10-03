@@ -19,6 +19,7 @@
 // Paths to the generated files, if you move files around change paths here.
 exports.file = {
   gitignore: '.gitignore',
+  dockerignore: '.dockerignore',
   package_json: 'package.json',
   README_md: 'README.md',
   server_js: 'server/server.js',
