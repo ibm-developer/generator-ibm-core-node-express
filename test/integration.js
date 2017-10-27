@@ -61,7 +61,7 @@ describe('core-node-express:app integration test with custom spec', function () 
     it('check package.json', function () {
       assert.jsonFileContent(common.file.package_json, {
         "version": "1.0.0",
-        "description": "A generated Bluemix application",
+        "description": "A generated IBM Cloud application",
         "private": true,
         "engines": {
           "node": "^6.9.0"
@@ -101,7 +101,7 @@ describe('core-node-express:app integration test with custom spec', function () 
       assert.fileContent(common.file.README_md, PROJECT_NAME);
     });
 
-    it('contains Bluemix badge', function () {
+    it('contains IBM Cloud badge', function () {
       assert.fileContent(common.file.README_md,
         '[![](https://img.shields.io/badge/bluemix-powered-blue.svg)](https://bluemix.net)');
     });
@@ -153,7 +153,7 @@ describe('core-node-express:app integration test with custom bluemix', function 
     it('check package.json', function () {
       assert.jsonFileContent(common.file.package_json, {
         "version": "1.0.0",
-        "description": "A generated Bluemix application",
+        "description": "A generated IBM Cloud application",
         "private": true,
         "engines": {
           "node": "^6.9.0"
@@ -248,7 +248,7 @@ describe('core-node-express:app integration test with custom bluemix and spec', 
     it('check package.json', function () {
       assert.jsonFileContent(common.file.package_json, {
         "version": "1.0.0",
-        "description": "A generated Bluemix application",
+        "description": "A generated IBM Cloud application",
         "private": true,
         "engines": {
           "node": "^6.9.0"
@@ -278,7 +278,7 @@ describe('core-node-express:app integration test with custom bluemix and spec', 
       assert.fileContent(common.file.README_md, PROJECT_NAME);
     });
 
-    it('contains Bluemix badge', function () {
+    it('contains IBM Cloud badge', function () {
       assert.fileContent(common.file.README_md,
         '[![](https://img.shields.io/badge/bluemix-powered-blue.svg)](https://bluemix.net)');
     });
