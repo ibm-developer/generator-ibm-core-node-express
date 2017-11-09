@@ -31,7 +31,7 @@ container-port-map-debug : "5858:5858"
 # The name for the dockerfile for the run container
 dockerfile-run : "docker-compose.yml"
 # The name for the dockerfile for the tools container
-dockerfile-tools : "Dockerfile-tools"
+dockerfile-tools : "docker-compose-tools.yml"
 
 # The name of image to create from dockerfile-run
 image-name-run : "<%= bluemix.name.toLowerCase() %>-express-run"
