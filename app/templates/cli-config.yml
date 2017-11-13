@@ -29,9 +29,19 @@ container-port-map : "3000:3000"
 container-port-map-debug : "5858:5858"
 
 # The name for the dockerfile for the run container
+<%if (typeof spec !== "undefined" && spec.applicationType === "mern") {-%>
 dockerfile-run : "docker-compose.yml"
+<%} else {-%>
+dockerfile-run : "Dockerfile"
+<%}-%>
+
 # The name for the dockerfile for the tools container
+
+<%if (typeof spec !== "undefined" && spec.applicationType === "mern") {-%>
 dockerfile-tools : "docker-compose-tools.yml"
+<%} else {-%>
+dockerfile-tools : "Dockerfile-tools"
+<%}-%>
 
 # The name of image to create from dockerfile-run
 image-name-run : "<%= bluemix.name.toLowerCase() %>-express-run"
