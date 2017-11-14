@@ -4,6 +4,11 @@ WORKDIR "/app"
 
 # Install app dependencies
 COPY package.json /app/
+RUN apt-get update \
+<% for (var index = 0; index < servicesPackages.length; index++) { -%>
+ && apt-get install -y <%- servicesPackages[index] %> \
+<% } -%>
+ && echo 'Finished installing dependencies'
 RUN cd /app; npm install --production
 
 COPY . /app
