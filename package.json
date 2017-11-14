@@ -24,7 +24,8 @@
     "testkube": "npm run mocha test/test-kubernetes.js",
     "lint": "eslint .",
     "mocha": "nyc mocha --recursive",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "version": "standard-version"
   },
   "devDependencies": {
     "coveralls": "^2.13.1",
@@ -32,6 +33,7 @@
     "eslint-plugin-ejs": "0.0.2",
     "mocha": "^3.2.0",
     "nyc": "^10.3.0",
+    "standard-version": "^4.2.0",
     "yeoman-assert": "^2.2.2",
     "yeoman-test": "^1.6.0"
   },
