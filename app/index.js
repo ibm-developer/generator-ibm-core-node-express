@@ -29,7 +29,7 @@ module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    //  bluemix option for YaaS integration
+    // bluemix option for YaaS integration
     this.argument(OPTION_BLUEMIX, {
       desc: 'Option for deploying with Bluemix. Stringified JSON.',
       required: false,
@@ -65,7 +65,27 @@ module.exports = class extends Generator {
     let formatters = {
       'pathFormatter': helpers.reformatPathToNodeExpress,
       'resourceFormatter': helpers.resourceNameFromPath
+    };
+
+    // Define metadata for all services that
+    // require custom logic in Dockerfiles
+    const services = require('./resources/services.json');
+
+    // Get array with all the keys for the services objects
+    const servKeys = Object.keys(services);
+    const servicesPackages = [];
+
+    // Iterate over service keys to search for provisioned services
+    for (let index in servKeys) {
+      const servKey = servKeys[index];
+      if (this.options.bluemix.hasOwnProperty(servKey)) {
+        if (services[servKey].package) {
+          servicesPackages.push(services[servKey].package);
+        }
+      }
     }
+
+    this.options.servicesPackages = servicesPackages;
 
     if (this.options.bluemix && this.options.bluemix.openApiServers && this.options.bluemix.openApiServers[0].spec) {
       let openApiDocumentBytes = typeof this.options.bluemix.openApiServers[0].spec === 'object'
@@ -101,7 +121,7 @@ module.exports = class extends Generator {
           'resource': resource,
           'routes': this.options.parsedSwagger.resources[resource],
           'basepath': this.options.parsedSwagger.basepath
-        }
+        };
         this.fs.copyTpl(this.templatePath('fromswagger/routers/router.js'), this.destinationPath(`server/routers/${resource}.js`), context);
         this.fs.copyTpl(this.templatePath('test/resource.js'), this.destinationPath(`test/${resource}.js`), context);
       }.bind(this));

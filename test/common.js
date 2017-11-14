@@ -37,4 +37,4 @@ exports.file = {
 exports.defaultPort = 3000;
 
 // The npm start command.
-exports.npmStart = "node server.js"
+exports.npmStart = "node server.js";
