@@ -15,10 +15,6 @@
  * Tests here do not stub out the subgenerators, so for the app generator
  * the real build and refresh subgenerators get called.
  */
-/**
- * Tests here do not stub out the subgenerators, so for the app generator
- * the real build and refresh subgenerators get called.
- */
 'use strict';
 const common = require('./common.js');
 const path = require('path');
@@ -26,6 +22,9 @@ const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const fs = require('fs');
 const PROJECT_NAME = "ProjectName";
+
+const scaffolderSample = require('./samples/scaffolder-sample');
+const scaffolderSampleNode = scaffolderSample.getJson('NODE');
 
 describe('core-node-express:app integration test with custom spec', function () {
   // Express build is slow so we need to set a longer timeout for the test
@@ -342,9 +341,25 @@ describe('core-node-express:app integration test with openApiServices', function
   });
 
   it('created expected endpoints', function () {
-    assert.file('server/routers/persons.js')
+    assert.file('server/routers/persons.js');
     assert.fileContent('server/routers/persons.js', 'router.get(\'/persons\', function (req, res, next) {');
-    assert.file('server/routers/dinosaurs.js')
+    assert.file('server/routers/dinosaurs.js');
     assert.fileContent('server/routers/dinosaurs.js', 'router.get(\'/dinosaurs\', function (req, res, next) {');
+  });
+});
+
+describe('core-node-express:app integration test with with dashDB', function () {
+  before(function () {
+    // Mock the options, set up an output folder and run the generator
+    return helpers.run(path.join( __dirname, '../app'))
+      .withOptions({
+        bluemix: scaffolderSampleNode
+      })
+      .toPromise(); // Get a Promise back when the generator finishes
+  });
+
+  it('create Dockerfile for running', function () {
+    assert.file(['Dockerfile', 'cli-config.yml', 'Dockerfile-tools']);
+    assert.fileContent('Dockerfile', '&& apt-get install -y libxml2 \\');
   });
 });
