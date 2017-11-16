@@ -10,9 +10,10 @@ PKG_VER_NEXT="$(echo -e "${PKG_VER_NEXT}" | tr -d '[:space:]')"
 
 echo "Determining next version: ${PKG_VER_NEXT}"
 
-git config user.email "travisci@travis.com"
-git config user.name "Travis CI"
-git config push.default simple
+USER_EMAIL=$(git --no-pager show -s --format='%ae' "${TRAVIS_COMMIT}")
+USER_NAME=$(git --no-pager show -s --format='%an' "${TRAVIS_COMMIT}")
+git config user.email "${USER_EMAIL}"
+git config user.name "${USER_NAME}"
 
 echo "Creating git branch"
 BRANCH="updateTo${PKG_VER_NEXT}"
