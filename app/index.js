@@ -24,6 +24,27 @@ const OPTION_SPEC = "spec";
 const REGEX_LEADING_ALPHA = /^[^a-zA-Z]*/;
 const REGEX_ALPHA_NUM = /[^a-zA-Z0-9]/g;
 
+const extraScriptForYoGenerated = {
+  "start:cluster": "sl-run server/server.js",
+  "build": "npm run build:idt",
+  "idt:build": "node idt.js build",
+  "idt:test": "node idt.js test",
+  "idt:debug": "node idt.js debug",
+  "idt:run": "node idt.js run",
+  "idt:deploy": "node idt.js deploy",
+  "idt:install": "node idt.js install"
+};
+
+const extraDependenciesForYoGenerated = {
+  "strong-supervisor": "^6.2.0"
+};
+
+const extraDevDependenciesForYoGenerated = {
+  "request": "^2.82.0",
+  "chalk": "^1.1.3",
+  "prompt-confirm": "^1.2.0"
+};
+
 module.exports = class extends Generator {
 
   constructor(args, opts) {
@@ -136,7 +157,6 @@ module.exports = class extends Generator {
     this.fs.copyTpl(this.templatePath('Dockerfile-tools'), this.destinationPath('Dockerfile-tools'), this.options);
     this.fs.copyTpl(this.templatePath('package.json'), this.destinationPath('package.json'), this.options);
     this.fs.copyTpl(this.templatePath('README.md'), this.destinationPath('README.md'), this.options);
-    this.fs.copyTpl(this.templatePath('idt.js'), this.destinationPath('idt.js'), this.options);
 
     // if project will have swagger doc, ensure swagger ui and api route
     if ( this.options.genSwagger ) {
@@ -167,6 +187,16 @@ module.exports = class extends Generator {
     // blank project is stripped down to bare minimum
     if(this.options.spec && this.options.spec.applicationType === 'BLANK') {
       this.fs.delete(this.destinationPath('server/routers/health.js'));
+    }
+
+    // Additional scripts for generation via yo
+    if(this.options.bluemix.fromYo) {
+      this.fs.copyTpl(this.templatePath('idt.js'), this.destinationPath('idt.js'), this.options);
+      let packageJSON = this.fs.readJSON(this.destinationPath('package.json'), require('./templates/package.json'));
+      Object.assign(packageJSON.scripts, extraScriptForYoGenerated);
+      Object.assign(packageJSON.dependencies, extraDependenciesForYoGenerated);
+      Object.assign(packageJSON.devDependencies, extraDevDependenciesForYoGenerated);
+      this.fs.writeJSON(this.destinationPath('package.json'), packageJSON);
     }
   }
 
