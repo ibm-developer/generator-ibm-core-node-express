@@ -17,12 +17,12 @@
     "appmetrics-prometheus": "^0.0.2",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
-    "log4js": "^1.1.1",
-    "nodemon": "^1.12.1"
+    "log4js": "^1.1.1"
   },
   "devDependencies": {
     "chai": "^4.0.0",
     "mocha": "^3.4.2",
-    "nyc": "^10.3.2"
+    "nyc": "^10.3.2",
+    "nodemon": "^1.12.1"
   }
 }
