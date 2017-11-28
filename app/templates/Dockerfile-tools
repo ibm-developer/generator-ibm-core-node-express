@@ -6,6 +6,7 @@ WORKDIR "/app"
 
 # Bundle app source
 COPY . /app
+COPY run-dev /bin
 
 EXPOSE 3000
 
