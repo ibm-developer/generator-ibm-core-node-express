@@ -1,0 +1,73 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+};
+
+#new-container {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.link-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  width: 60%;
+}
+
+.ibm-cloud {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.ibm-cloud img {
+  display:block;
+  margin:auto;
+}
+
+.link-item a {
+  color: #6e98df;
+  text-decoration: underline;
+  font-size: 1em;
+}
+
+.link-items-section {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  width: 30%;
+  padding: 5% 5% 5% 10%;
+}
+
+.link-item {
+  list-style-image: url("/assets/arrow-right.png");
+  padding: 5px;
+}
+
+.title {
+  color: black;
+  text-align: center;
+}
+
+.title-404 {
+  color: black;
+  text-align: center;
+  font-size: 4em;
+}
+
+.subtitle {
+  color: black;
+  text-align: center;
+}
+
+.ibm-404 {
+  margin: auto;
+  width: 35%;
+}
+
+.ibm-404 a {
+  color: #6e98df;
+  text-decoration: underline;
+}

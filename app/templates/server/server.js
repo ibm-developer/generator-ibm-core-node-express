@@ -5,6 +5,7 @@ const appName = require('./../package').name;
 const express = require('express');
 const log4js = require('log4js');
 const localConfig = require('./config/local.json');
+const path = require('path');
 
 const logger = log4js.getLogger(appName);
 const app = express();
@@ -25,3 +26,11 @@ app.listen(port, function(){
   logger.info(`Swagger UI is available at http://localhost:${port}/explorer`);
   <% } %>
 });
+
+app.use(function (req, res, next) {
+  res.sendFile(path.join(__dirname, '../public/assets', '404.html'));
+})
+
+app.use(function (err, req, res, next) {
+  res.sendFile(path.join(__dirname, '../public/assets', '500.html'));
+})
