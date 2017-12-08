@@ -183,6 +183,13 @@ module.exports = class extends Generator {
     }
     else {
       this.fs.copy(this.templatePath('public/index.html'), this.destinationPath('public/index.html'));
+      this.fs.copy(this.templatePath('public/css/default.css'), this.destinationPath('public/css/default.css'));
+      this.fs.copy(this.templatePath('public/js/bundle.js'), this.destinationPath('public/js/bundle.js'));
+      this.fs.copy(this.templatePath('public/assets/404.html'), this.destinationPath('public/assets/404.html'));
+      this.fs.copy(this.templatePath('public/assets/404.svg'), this.destinationPath('public/assets/404.svg'));
+      this.fs.copy(this.templatePath('public/assets/500.html'), this.destinationPath('public/assets/500.html'));
+      this.fs.copy(this.templatePath('public/assets/arrow-right.png'), this.destinationPath('public/assets/arrow-right.png'));
+      this.fs.copy(this.templatePath('public/assets/cloud-header.png'), this.destinationPath('public/assets/cloud-header.png'));
     }
 
     // blank project is stripped down to bare minimum
