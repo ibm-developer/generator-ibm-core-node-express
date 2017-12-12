@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v0.3.1...v0.4.0) (2017-12-08)
+
+
+### Features
+
+* **node:** add updated success page for running app and add routes for 404 and 500 errors ([1fc8eb8](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/1fc8eb8))
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v0.3.0...v0.3.1) (2017-12-07)
 
