@@ -20,6 +20,8 @@ const helpers = require('../lib/helpers');
 const swaggerize = require('ibm-openapi-support');
 const OPTION_BLUEMIX = "bluemix";
 const OPTION_SPEC = "spec";
+const process= require('process');
+const fs= require('fs');
 
 const REGEX_LEADING_ALPHA = /^[^a-zA-Z]*/;
 const REGEX_ALPHA_NUM = /[^a-zA-Z0-9]/g;
@@ -205,6 +207,15 @@ module.exports = class extends Generator {
       Object.assign(packageJSON.dependencies, extraDependenciesForYoGenerated);
       Object.assign(packageJSON.devDependencies, extraDevDependenciesForYoGenerated);
       this.fs.writeJSON(this.destinationPath('package.json'), packageJSON);
+    }
+
+    // Create node_modules_linux, which is used as 
+    // a docker mount point source folder. By creating
+    // it now, we avoid permission problem later for 
+    // 'idt build'. 
+    let dir = process.cwd() + '/node_modules_linux';
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, 0o755);
     }
   }
 
