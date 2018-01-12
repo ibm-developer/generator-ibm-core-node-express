@@ -13,11 +13,9 @@ module.exports = function(app){
   <% } 
      if ( !parsedSwagger &&  (typeof spec === 'undefined' || (typeof spec !== 'undefined' && spec.applicationType !== 'MS'))) {%>
     require('./public')(app);
-  <% }
-     if(typeof spec === 'undefined' || spec.applicationType !== 'BLANK'){ %>
+  <% } %>
     require('./health')(app);
-  <% }
-     if (parsedSwagger) {
+  <% if (parsedSwagger) {
        Object.keys(parsedSwagger.resources).forEach(function(resource) { -%>
     require('./<%- resource %>')(app, basepath);
   <%   });
