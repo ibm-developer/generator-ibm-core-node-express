@@ -9,6 +9,7 @@ const path = require('path');
 
 const logger = log4js.getLogger(appName);
 const app = express();
+app.use(log4js.connectLogger(logger, { level: 'info' }));
 const serviceManager = require('./services/service-manager');
 require('./services/index')(app);
 require('./routers/index')(app);
