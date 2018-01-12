@@ -7,6 +7,7 @@ WORKDIR "/app"
 # Bundle app source
 COPY . /app
 COPY run-dev /bin
+RUN chmod 777 /bin/run-dev
 
 EXPOSE 3000
 

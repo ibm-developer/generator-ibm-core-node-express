@@ -194,11 +194,6 @@ module.exports = class extends Generator {
       this.fs.copy(this.templatePath('public/assets/cloud-header.png'), this.destinationPath('public/assets/cloud-header.png'));
     }
 
-    // blank project is stripped down to bare minimum
-    if(this.options.spec && this.options.spec.applicationType === 'BLANK') {
-      this.fs.delete(this.destinationPath('server/routers/health.js'));
-    }
-
     // Additional scripts for generation via yo
     if(this.options.bluemix.fromYo) {
       this.fs.copyTpl(this.templatePath('idt.js'), this.destinationPath('idt.js'), this.options);
