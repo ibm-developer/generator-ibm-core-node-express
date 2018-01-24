@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node server/server.js",
-    "debug": "node --debug server/server.js",
+    "debug": "./run-debug",
     "test": "nyc mocha",
     "dev": "nodemon server/server.js"
   },
