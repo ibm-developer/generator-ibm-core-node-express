@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.4"></a>
+## [0.4.4](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v0.4.3...v0.4.4) (2018-01-24)
+
+
+### Bug Fixes
+
+* **scripts:** added comments to scripts and added run-debug to support --inspect and --debug ([9676b8d](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/9676b8d))
+
+
+
 <a name="0.4.3"></a>
 ## [0.4.3](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v0.4.2...v0.4.3) (2018-01-12)
 
