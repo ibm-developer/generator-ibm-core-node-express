@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.5"></a>
+## [0.4.5](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v0.4.4...v0.4.5) (2018-01-25)
+
+
+### Bug Fixes
+
+* **shell:** copy run-dev from template to destionation path ([6f80d18](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/6f80d18))
+
+
+
 <a name="0.4.4"></a>
 ## [0.4.4](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v0.4.3...v0.4.4) (2018-01-24)
 
