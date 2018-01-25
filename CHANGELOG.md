@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* **shell:** copy run-dev from template to destionation path ([6f80d18](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/6f80d18)), closes [arf/planning-node#377](https://github.com/arf/planning-node/issues/377)
+* **shell:** copy run-dev from template to destionation path ([6f80d18](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/6f80d18))
 
 
 
