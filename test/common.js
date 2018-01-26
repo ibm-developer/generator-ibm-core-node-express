@@ -23,7 +23,6 @@ exports.file = {
   package_json: 'package.json',
   README_md: 'README.md',
   server_js: 'server/server.js',
-  index_html: 'public/index.html',
   local: 'server/config/local.json',
   health: 'server/routers/health.js',
   index_router: 'server/routers/index.js',

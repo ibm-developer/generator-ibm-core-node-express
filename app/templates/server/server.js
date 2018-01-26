@@ -29,9 +29,9 @@ app.listen(port, function(){
 });
 
 app.use(function (req, res, next) {
-  res.sendFile(path.join(__dirname, '../public/assets', '404.html'));
+  res.sendFile(path.join(__dirname, '../public', '404.html'));
 })
 
 app.use(function (err, req, res, next) {
-  res.sendFile(path.join(__dirname, '../public/assets', '500.html'));
+  res.sendFile(path.join(__dirname, '../public', '500.html'));
 })

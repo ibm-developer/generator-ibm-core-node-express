@@ -92,7 +92,7 @@ describe('core-node-express:app integration test with custom spec', function () 
 
     it('contains IBM Cloud badge', function () {
       assert.fileContent(common.file.README_md,
-        '[![](https://img.shields.io/badge/bluemix-powered-blue.svg)](https://bluemix.net)');
+        '[![](https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg)](https://bluemix.net)');
     });
   });
 
@@ -181,9 +181,9 @@ describe('core-node-express:app integration test with custom bluemix.fromYo flag
       assert.fileContent(common.file.README_md, PROJECT_NAME);
     });
 
-    it('contains Bluemix badge', function () {
+    it('contains IBM Cloud badge', function () {
       assert.fileContent(common.file.README_md,
-          '[![](https://img.shields.io/badge/bluemix-powered-blue.svg)](https://bluemix.net)');
+          '[![](https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg)](https://bluemix.net)');
     });
   });
 
@@ -274,9 +274,9 @@ describe('core-node-express:app integration test with custom bluemix', function 
       assert.fileContent(common.file.README_md, PROJECT_NAME);
     });
 
-    it('contains Bluemix badge', function () {
+    it('contains IBM Cloud badge', function () {
       assert.fileContent(common.file.README_md,
-          '[![](https://img.shields.io/badge/bluemix-powered-blue.svg)](https://bluemix.net)');
+          '[![](https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg)](https://bluemix.net)');
     });
   });
 
@@ -370,7 +370,7 @@ describe('core-node-express:app integration test with custom bluemix and spec', 
 
     it('contains IBM Cloud badge', function () {
       assert.fileContent(common.file.README_md,
-        '[![](https://img.shields.io/badge/bluemix-powered-blue.svg)](https://bluemix.net)');
+        '[![](https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg)](https://bluemix.net)');
     });
   });
 
