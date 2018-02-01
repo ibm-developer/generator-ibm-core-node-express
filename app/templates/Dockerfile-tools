@@ -2,6 +2,8 @@ FROM ibmcom/ibmnode
 
 ENV PORT 3000
 
+ENV NODE_HEAPDUMP_OPTIONS nosignal
+
 WORKDIR "/app"
 
 # Bundle app source
