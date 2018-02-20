@@ -15,6 +15,7 @@
   "dependencies": {
     "appmetrics-dash": "^3.3.2",
     "appmetrics-prometheus": "^0.0.2",
+    "appmetrics-zipkin": "^1.0.4",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "log4js": "^1.1.1"

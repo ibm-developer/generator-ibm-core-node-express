@@ -14,6 +14,13 @@ const serviceManager = require('./services/service-manager');
 require('./services/index')(app);
 require('./routers/index')(app);
 
+// Uncomment following to enable zipkin tracing, tailor to fit your network configuration:
+// var appzip = require('appmetrics-zipkin')({
+//     host: 'localhost',
+//     port: 9411,
+//     serviceName:'frontend'
+// });
+
 // Add your code here
 
 const port = process.env.PORT || localConfig.port;
