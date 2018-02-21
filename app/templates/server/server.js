@@ -1,3 +1,10 @@
+// Uncomment following to enable zipkin tracing, tailor to fit your network configuration:
+// var appzip = require('appmetrics-zipkin')({
+//     host: 'localhost',
+//     port: 9411,
+//     serviceName:'frontend'
+// });
+
 require('appmetrics-dash').attach();
 require('appmetrics-prometheus').attach();
 
@@ -13,13 +20,6 @@ app.use(log4js.connectLogger(logger, { level: process.env.LOG_LEVEL || 'info' })
 const serviceManager = require('./services/service-manager');
 require('./services/index')(app);
 require('./routers/index')(app);
-
-// Uncomment following to enable zipkin tracing, tailor to fit your network configuration:
-// var appzip = require('appmetrics-zipkin')({
-//     host: 'localhost',
-//     port: 9411,
-//     serviceName:'frontend'
-// });
 
 // Add your code here
 
