@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v0.4.7...v0.5.0) (2018-02-21)
+
+
+### Bug Fixes
+
+* zipkin needs to be at the beginning ([dd712bd](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/dd712bd))
+
+
+### Features
+
+* include appmetrics-zipkin ([8f6b601](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/8f6b601))
+
+
+
 <a name="0.4.7"></a>
 ## [0.4.7](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v0.4.6...v0.4.7) (2018-02-01)
 
