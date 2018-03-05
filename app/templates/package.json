@@ -12,6 +12,11 @@
     "test": "nyc mocha",
     "dev": "nodemon server/server.js"
   },
+  "nodemonConfig": {
+	  "env": {
+		  "NODE_HEAPDUMP_OPTIONS": "nosignal"
+	  }
+  },
   "dependencies": {
     "appmetrics-dash": "^3.3.2",
     "appmetrics-prometheus": "^0.0.2",
