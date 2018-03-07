@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.1"></a>
+## [0.5.1](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v0.5.0...v0.5.1) (2018-03-07)
+
+
+### Bug Fixes
+
+* **development:** add NODE_DEBUG_OPTIONS to nodemon config ([7dd38c7](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/7dd38c7))
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v0.4.7...v0.5.0) (2018-02-21)
 
