@@ -7,7 +7,6 @@
 
 require('appmetrics-dash').attach();
 require('appmetrics-prometheus').attach();
-
 const appName = require('./../package').name;
 const express = require('express');
 const log4js = require('log4js');
