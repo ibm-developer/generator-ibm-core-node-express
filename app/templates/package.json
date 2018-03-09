@@ -8,14 +8,14 @@
   },
   "scripts": {
     "start": "node server/server.js",
-    "debug": "run-debug",
+    "debug": "chmod +x run-debug && ./run-debug",
     "test": "nyc mocha",
     "dev": "nodemon server/server.js"
   },
   "nodemonConfig": {
-	  "env": {
-		  "NODE_HEAPDUMP_OPTIONS": "nosignal"
-	  }
+    "env": {
+      "NODE_HEAPDUMP_OPTIONS": "nosignal"
+    }
   },
   "dependencies": {
     "appmetrics-dash": "^3.3.2",

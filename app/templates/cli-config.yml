@@ -58,7 +58,7 @@ build-cmd-debug : "npm install"
 # The command to run the code in the run container
 run-cmd : ""
 # The command to execute debug of the code in the tools container
-debug-cmd : "npm run debug"
+debug-cmd : "run-debug"
 # The command to stop the code
 stop-cmd : "npm stop"
 
