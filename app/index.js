@@ -224,7 +224,7 @@ module.exports = class extends Generator {
   _sanitizeOption(options, name) {
     let optionValue = options[name];
     if (!optionValue) {
-      logger.error("Missing", name, "parameter");
+      logger.warn("Missing", name, "parameter");
       return false;
     }
 
