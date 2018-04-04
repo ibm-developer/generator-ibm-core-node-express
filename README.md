@@ -38,17 +38,38 @@ npm install -g yo
 
 ## Installation
 
-``bash
+```bash
 npm install -g generator-ibm-core-node-express
-``
+```
 
 ## Usage
 
-Following command line arguments are supported
+```bash
+yo ibm-core-node-express --bluemix='{"name":"<project-name>"}'
+```
+
+Following command line arguments are supported:
  
 *  `--bluemix='{"name":"<project-name>","backendPlatform":"NODE"}'`. 
-* You will need at least a name and backendPlatform to run it locally.
+*  You will need at least a project name to run it locally.
 *  You can alternatively supply a local file containing compatible JSON object by using `--bluemix file:path/to/file.json`
+
+## Artifacts
+
+Here is a list of the files and folders you receive after executing the generator:  
+
+File  | Purpose
+---       | ---
+Dockerfile | Configuration file for the run container
+Dockerfile-tools | Configuration file for the tools container
+README.md | Instructions for building, running, and deploying the project
+cli-config.yml | Yaml file containing mappings for various commands, files, and settings, utilized by the cli commands
+package.json | JSON file containing project info, scripts, nodemonConfig, and dependencies
+public/* | Folder containing files for server landing page (specifically public/index.html)
+run-debug | Simple shell script to run debug mode
+run-dev | Simple shell script to run application in dev mode
+server/* | Folder containing server configuration files (specifically server/server.js)
+test/* | Folder containing JSON files for running code tests (npm test)
 
 ## Development
 
@@ -63,7 +84,7 @@ npm link
 In a separate directory invoke the generator via
 
 ```
-yo ibm-core-node-express --bluemix='{"name":"<project-name>","backendPlatform":"NODE"}'  
+yo ibm-core-node-express --bluemix='{"name":"<project-name>"}'  
 ```
 
 ## Publishing Changes
