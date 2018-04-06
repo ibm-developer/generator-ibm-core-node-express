@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v0.5.3...v1.0.0) (2018-04-06)
+
+
+### Bug Fixes
+
+* remove generation of web files ([1b1157f](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/1b1157f))
+
+
+### BREAKING CHANGES
+
+* remove generation of web files
+
+remove web files- will be covered by generator-web
+
+cleanup
+
+update unit tests; update badge for IBM Cloud
+
+
+
 <a name="0.5.3"></a>
 ## [0.5.3](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v0.5.2...v0.5.3) (2018-03-28)
 
