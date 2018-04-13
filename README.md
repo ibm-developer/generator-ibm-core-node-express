@@ -28,6 +28,8 @@
 [img-codacy]: https://api.codacy.com/project/badge/Grade/a5893a4622094dc8920c8a372a8d3588?branch=development
 [url-codacy]: https://www.codacy.com/app/ibm-developer/generator-ibm-core-node-express
 
+This generator produces a simple Express-based Node.js server project, with all the ingredients you need for a good start at building a cloud native application. It can be run locally or remotely (e.g. IBM Cloud).
+
 ## Pre-requisites
 
 Install [Yeoman](http://yeoman.io)
