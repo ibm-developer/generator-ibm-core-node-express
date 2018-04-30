@@ -78,7 +78,7 @@ describe('core-node-express:app integration test with custom spec', function () 
         "description": "A generated IBM Cloud application",
         "private": true,
         "engines": {
-          "node": "^6.9.0"
+          "node": "^8.11.1"
         },
         "scripts": {
           "start": "node server/server.js",
@@ -169,7 +169,7 @@ describe('core-node-express:app integration test with custom bluemix.fromYo flag
         "description": "A generated IBM Cloud application",
         "private": true,
         "engines": {
-          "node": "^6.9.0"
+          "node": "^8.11.1"
         },
         "scripts": {
           "start": "node server/server.js",
@@ -279,7 +279,7 @@ describe('core-node-express:app integration test with custom bluemix', function 
         "description": "A generated IBM Cloud application",
         "private": true,
         "engines": {
-          "node": "^6.9.0"
+          "node": "^8.11.1"
         },
         "scripts": {
           "start": "node server/server.js",
@@ -381,7 +381,7 @@ describe('core-node-express:app integration test with custom bluemix and spec', 
         "description": "A generated IBM Cloud application",
         "private": true,
         "engines": {
-          "node": "^6.9.0"
+          "node": "^8.11.1"
         },
         "scripts": {
           "start": "node server/server.js",
