@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v1.0.6...v2.0.0) (2018-05-02)
+
+
+### Features
+
+* **version:** updating to Node v8 ([597b1fb](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/597b1fb))
+
+
+### BREAKING CHANGES
+
+* **version:** potential breaking changes between v6 LTS and v8 LTS
+(https://github.com/nodejs/node/wiki/Breaking-changes-between-v6-LTS-and-v8-LTS)
+
+
+
 <a name="1.0.6"></a>
 ## [1.0.6](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v1.0.5...v1.0.6) (2018-04-30)
 
