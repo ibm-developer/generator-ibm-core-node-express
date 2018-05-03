@@ -8,6 +8,8 @@ RUN apt-get update \
 <% for (var index = 0; index < servicesPackages.length; index++) { -%>
  && apt-get install -y <%- servicesPackages[index] %> \
 <% } -%>
+ && apt-get dist-upgrade -y \
+ && apt-get clean \
  && echo 'Finished installing dependencies'
 RUN cd /app; npm install --production
 

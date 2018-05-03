@@ -39,6 +39,7 @@ jspm_packages
 test/tmp
 .idea
 .vscode
+xunit.xml
 
 # output from generator 
 # Dockerfile

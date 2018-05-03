@@ -2,6 +2,103 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v1.0.6...v2.0.0) (2018-05-02)
+
+
+### Features
+
+* **version:** updating to Node v8 ([597b1fb](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/597b1fb))
+
+
+### BREAKING CHANGES
+
+* **version:** potential breaking changes between v6 LTS and v8 LTS
+(https://github.com/nodejs/node/wiki/Breaking-changes-between-v6-LTS-and-v8-LTS)
+
+
+
+<a name="1.0.6"></a>
+## [1.0.6](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v1.0.5...v1.0.6) (2018-04-30)
+
+
+### Bug Fixes
+
+* readd nodemon back as devDependency ([34fe0e8](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/34fe0e8))
+
+
+
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v1.0.4...v1.0.5) (2018-04-17)
+
+
+### Bug Fixes
+
+* changed debug port from 5858 to 9229 ([9f984c6](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/9f984c6))
+
+
+
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v1.0.3...v1.0.4) (2018-04-13)
+
+
+### Bug Fixes
+
+* **package.json:** remove nodemon from dev dependencies ([c9c6bed](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/c9c6bed))
+
+
+
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v1.0.2...v1.0.3) (2018-04-13)
+
+
+
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v1.0.1...v1.0.2) (2018-04-10)
+
+
+### Bug Fixes
+
+* **travis:** add -force flag to force push auto pull request and add -e flag  ([83cf4a8](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/83cf4a8))
+
+
+
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v1.0.0...v1.0.1) (2018-04-09)
+
+
+### Bug Fixes
+
+* update dependencies for image vulnerabilities ([3d73a18](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/3d73a18))
+
+
+
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v0.5.3...v1.0.0) (2018-04-06)
+
+
+### Bug Fixes
+
+* remove generation of web files ([1b1157f](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/1b1157f))
+
+
+### BREAKING CHANGES
+
+* remove generation of web files
+
+remove web files- will be covered by generator-web
+
+cleanup
+
+update unit tests; update badge for IBM Cloud
+
+
+
+<a name="0.5.3"></a>
+## [0.5.3](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v0.5.2...v0.5.3) (2018-03-28)
+
+
+
 <a name="0.5.2"></a>
 ## [0.5.2](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v0.5.1...v0.5.2) (2018-03-09)
 
