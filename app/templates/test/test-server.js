@@ -9,31 +9,7 @@ describe('Testing Server', function() {
     setTimeout(done, 5000); // Waiting 5 seconds for server to start
     this.timeout(10000);
   });
-<% if(typeof spec === 'undefined' || spec.applicationType !== 'MS') { %>
-  it('Public endpoint returns "Hello!"', function(done){
-    var responseString = '';
 
-    var options = {
-      host: 'localhost',
-      port: process.env.PORT || 3000,
-      path: '/'
-    };
-
-    var callback = function(response){
-      response.on('data', function (chunk) {
-        responseString += chunk;
-      });
-
-      response.on('end', function () {
-        expect(responseString).to.include('Hello world! This is a StarterKit!');
-        done();
-      });
-    };
-
-    http.request(options, callback).end();
-  });
-<% } %>
-<% if(typeof spec === 'undefined' || spec.applicationType !== 'BLANK') { %>
   it('Health endpoint shows status up', function(done){
     var responseString = '';
 
@@ -56,5 +32,4 @@ describe('Testing Server', function() {
 
     http.request(options, callback).end();
   });
-<% } %>
 });
