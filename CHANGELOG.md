@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v2.0.0...v2.0.1) (2018-05-09)
+
+
+### Bug Fixes
+
+* restore health endpoint test ([1f9e19b](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/1f9e19b))
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v1.0.6...v2.0.0) (2018-05-02)
 
