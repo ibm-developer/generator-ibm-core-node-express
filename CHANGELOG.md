@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v2.0.1...v3.0.0) (2018-05-29)
+
+
+### Code Refactoring
+
+* **deployments:** remove all deployment related files ([e8355af](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/e8355af))
+
+
+### BREAKING CHANGES
+
+* **deployments:** generator-core-node-express will no longer generator Dockerfile, Dockerfile-tools, and cli-config.yml.
+
+
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v2.0.0...v2.0.1) (2018-05-09)
 
