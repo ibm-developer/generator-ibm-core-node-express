@@ -90,26 +90,6 @@ module.exports = class extends Generator {
       'resourceFormatter': helpers.resourceNameFromPath
     };
 
-    // Define metadata for all services that
-    // require custom logic in Dockerfiles
-    const services = require('./resources/services.json');
-
-    // Get array with all the keys for the services objects
-    const servKeys = Object.keys(services);
-    const servicesPackages = [];
-
-    // Iterate over service keys to search for provisioned services
-    for (let index in servKeys) {
-      const servKey = servKeys[index];
-      if (this.options.bluemix.hasOwnProperty(servKey)) {
-        if (services[servKey].package) {
-          servicesPackages.push(services[servKey].package);
-        }
-      }
-    }
-
-    this.options.servicesPackages = servicesPackages;
-
     if (this.options.bluemix && this.options.bluemix.openApiServers && this.options.bluemix.openApiServers[0].spec) {
       let openApiDocumentBytes = typeof this.options.bluemix.openApiServers[0].spec === 'object'
         ? JSON.stringify(this.options.bluemix.openApiServers[0].spec)
@@ -153,10 +133,6 @@ module.exports = class extends Generator {
     this.fs.copyTpl(this.templatePath('test/test-server.js'), this.destinationPath('test/test-server.js'), this.options);
     this.fs.copyTpl(this.templatePath('test/test-demo.js'), this.destinationPath('test/test-demo.js'), this.options);
     this.fs.copyTpl(this.templatePath('_gitignore'), this.destinationPath('.gitignore'), this.options);
-    this.fs.copyTpl(this.templatePath('_dockerignore'), this.destinationPath('.dockerignore'), this.options);
-    this.fs.copyTpl(this.templatePath('cli-config.yml'), this.destinationPath('cli-config.yml'), this.options);
-    this.fs.copyTpl(this.templatePath('Dockerfile'), this.destinationPath('Dockerfile'), this.options);
-    this.fs.copyTpl(this.templatePath('Dockerfile-tools'), this.destinationPath('Dockerfile-tools'), this.options);
     this.fs.copyTpl(this.templatePath('package.json'), this.destinationPath('package.json'), this.options);
     this.fs.copyTpl(this.templatePath('README.md'), this.destinationPath('README.md'), this.options);
     this.fs.copyTpl(this.templatePath('run-dev'), this.destinationPath('run-dev'), this.options);
