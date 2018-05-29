@@ -62,10 +62,7 @@ Here is a list of the files and folders you receive after executing the generato
 
 File  | Purpose
 ---       | ---
-Dockerfile | Configuration file for the run container
-Dockerfile-tools | Configuration file for the tools container
 README.md | Instructions for building, running, and deploying the project
-cli-config.yml | Yaml file containing mappings for various commands, files, and settings, utilized by the cli commands
 package.json | JSON file containing project info, scripts, nodemonConfig, and dependencies
 public/* | Folder containing files for server landing page (specifically public/index.html)
 run-debug | Simple shell script to run debug mode
