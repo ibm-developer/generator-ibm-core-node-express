@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.1"></a>
+## [3.0.1](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v3.0.0...v3.0.1) (2018-06-20)
+
+
+### Bug Fixes
+
+* added host and port for debugger ([47705c7](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/47705c7))
+
+
+
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v2.0.1...v3.0.0) (2018-05-29)
 
