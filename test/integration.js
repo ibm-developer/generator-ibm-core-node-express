@@ -86,8 +86,8 @@ describe('core-node-express:app integration test with custom spec', function () 
           "test": "nyc mocha"
         },
         "dependencies": {
-          "appmetrics-dash": "^3.3.2",
-          "appmetrics-prometheus": "^0.0.2",
+          "appmetrics-dash": "^4.0.0",
+          "appmetrics-prometheus": "^2.0.0",
           "body-parser": "^1.17.2",
           "express": "^4.15.3",
           "log4js": "^1.1.1"
@@ -177,8 +177,8 @@ describe('core-node-express:app integration test with custom bluemix.fromYo flag
           "idt:install": "node idt.js install"
         },
         "dependencies": {
-          "appmetrics-dash": "^3.3.2",
-          "appmetrics-prometheus": "^0.0.2",
+          "appmetrics-dash": "^4.0.0",
+          "appmetrics-prometheus": "^2.0.0",
           "body-parser": "^1.17.2",
           "express": "^4.15.3",
           "log4js": "^1.1.1",
@@ -272,8 +272,8 @@ describe('core-node-express:app integration test with custom bluemix', function 
           "test": "nyc mocha"
         },
         "dependencies": {
-          "appmetrics-dash": "^3.3.2",
-          "appmetrics-prometheus": "^0.0.2",
+          "appmetrics-dash": "^4.0.0",
+          "appmetrics-prometheus": "^2.0.0",
           "body-parser": "^1.17.2",
           "express": "^4.15.3",
           "log4js": "^1.1.1"
@@ -367,8 +367,8 @@ describe('core-node-express:app integration test with custom bluemix and spec', 
           "test": "nyc mocha"
         },
         "dependencies": {
-          "appmetrics-dash": "^3.3.2",
-          "appmetrics-prometheus": "^0.0.2",
+          "appmetrics-dash": "^4.0.0",
+          "appmetrics-prometheus": "^2.0.0",
           "body-parser": "^1.17.2",
           "express": "^4.15.3",
           "log4js": "^1.1.1"
