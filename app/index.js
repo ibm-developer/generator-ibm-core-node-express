@@ -135,8 +135,6 @@ module.exports = class extends Generator {
     this.fs.copyTpl(this.templatePath('_gitignore'), this.destinationPath('.gitignore'), this.options);
     this.fs.copyTpl(this.templatePath('package.json'), this.destinationPath('package.json'), this.options);
     this.fs.copyTpl(this.templatePath('README.md'), this.destinationPath('README.md'), this.options);
-    this.fs.copyTpl(this.templatePath('run-dev'), this.destinationPath('run-dev'), this.options);
-    this.fs.copyTpl(this.templatePath('run-debug'), this.destinationPath('run-debug'), this.options);
 
     // if project will have swagger doc, ensure swagger ui and api route
     if ( this.options.genSwagger ) {
