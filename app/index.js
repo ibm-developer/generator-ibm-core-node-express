@@ -192,14 +192,6 @@ module.exports = class extends Generator {
       return false;
     }
 
-    if (typeof optionValue === "string" && optionValue.indexOf("file:") === 0) {
-      let fileName = optionValue.replace("file:", "");
-      let filePath = this.destinationPath("./" + fileName);
-      logger.info("Reading", name, "parameter from local file", filePath);
-      this.options[name] = this.fs.readJSON(filePath);
-      return true;
-    }
-
     try {
       this.options[name] = typeof(this.options[name]) === "string" ?
       JSON.parse(this.options[name]) : this.options[name];
