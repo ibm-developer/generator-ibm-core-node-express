@@ -135,8 +135,6 @@ module.exports = class extends Generator {
     this.fs.copyTpl(this.templatePath('_gitignore'), this.destinationPath('.gitignore'), this.options);
     this.fs.copyTpl(this.templatePath('package.json'), this.destinationPath('package.json'), this.options);
     this.fs.copyTpl(this.templatePath('README.md'), this.destinationPath('README.md'), this.options);
-    this.fs.copyTpl(this.templatePath('run-dev'), this.destinationPath('run-dev'), this.options);
-    this.fs.copyTpl(this.templatePath('run-debug'), this.destinationPath('run-debug'), this.options);
 
     // if project will have swagger doc, ensure swagger ui and api route
     if ( this.options.genSwagger ) {
@@ -192,14 +190,6 @@ module.exports = class extends Generator {
     if (!optionValue) {
       logger.warn("Missing", name, "parameter");
       return false;
-    }
-
-    if (typeof optionValue === "string" && optionValue.indexOf("file:") === 0) {
-      let fileName = optionValue.replace("file:", "");
-      let filePath = this.destinationPath("./" + fileName);
-      logger.info("Reading", name, "parameter from local file", filePath);
-      this.options[name] = this.fs.readJSON(filePath);
-      return true;
     }
 
     try {
