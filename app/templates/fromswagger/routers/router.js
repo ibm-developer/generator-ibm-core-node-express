@@ -3,18 +3,19 @@ var express = require('express');
 module.exports = function(app, basepath) {
   var router = express.Router();
 
-<% if (routes) { -%>
-<%   routes.forEach(function (route) { -%>
-  router.<%- route.method %>('<%- route.route %>', function (req, res, next) {
+{{#if routes}}
+	{{#each routes}}
+  router.{{method}}('{{route}}', function (req, res, next) {
     res.json({});
   })
 
-<%   }); -%>
-<% if (basepath) { -%>
+	{{/each}}
+{{#if basepath}}
   app.use(basepath, router);
-<% } else { -%>
+{{else}}
   app.use(router);
-<% } -%>
-<% } -%>
+{{/if}}
+
+{{/if}}
 }
 

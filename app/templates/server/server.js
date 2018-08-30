@@ -27,14 +27,13 @@ require('./routers/index')(app,server);
 
 const port = process.env.PORT || localConfig.port;
 server.listen(port, function(){
-  logger.info(`<%= bluemix.name %> listening on http://localhost:${port}/appmetrics-dash`);
-  <% if( !genSwagger ){ %>
-  logger.info(`<%= bluemix.name %> listening on http://localhost:${port}`);
-  <% } %>
-  <% if( genSwagger ){ %>
+  logger.info(`{{name}} listening on http://localhost:${port}/appmetrics-dash`);
+    {{#if genSwagger}}
   logger.info(`OpenAPI (Swagger) spec is available at http://localhost:${port}/swagger/api`);
   logger.info(`Swagger UI is available at http://localhost:${port}/explorer`);
-  <% } %>
+    {{else}}
+  logger.info(`{{name}} listening on http://localhost:${port}`);
+    {{/if}}
 });
 
 app.use(function (req, res, next) {

@@ -1,4 +1,4 @@
-# <%= bluemix.name || spec.appname -%>
+# {{name}}
 
 A generated IBM Cloud application
 
