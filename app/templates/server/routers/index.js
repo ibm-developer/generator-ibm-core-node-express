@@ -10,8 +10,8 @@ module.exports = function(app, server){
          {{#if genSwagger}}
     require('./swagger')(app);
          {{/if}}
-             {{#genSwagger parsedSwagger spec}}
-             {{/genSwagger}}
+             {{#genPublic parsedSwagger spec}}
+             {{/genPublic}}
     require('./health')(app);
                  {{#if parsedSwagger}}
                  {{#parsedSwagger parsedSwagger}}
