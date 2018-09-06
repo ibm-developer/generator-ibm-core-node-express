@@ -431,6 +431,7 @@ describe('core-node-express:app integration test with openApiServices', function
     assert.file('test/dinosaurs.js');
     assert.fileContent('test/dinosaurs.js', 'it(\'Testing GET for /dinosaurs route\',function(done)');
     assert.fileContent('server/routers/index.js', 'require(\'./persons\')(app, basepath);');
+    assert.fileContent('server/routers/index.js', 'require(\'./public\')(app)');
     assert.fileContent('server/routers/swagger.js', './public/swagger.json');
   });
 

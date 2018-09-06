@@ -10,6 +10,8 @@ module.exports = function(app, server){
          {{#if genSwagger}}
     require('./swagger')(app);
          {{/if}}
+			 {{log parsedSwagger}}
+			 {{log spec}}
              {{#genSwagger parsedSwagger spec}}
              {{/genSwagger}}
     require('./health')(app);
