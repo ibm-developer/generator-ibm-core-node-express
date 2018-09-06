@@ -177,7 +177,7 @@ module.exports = class extends Generator {
     }
 
     // if there is swagger, there is no index page
-    if( this.options.genSwagger ) {
+    if( this.options.genSwagger || (this.options.spec && this.options.spec.applicationType === 'BLANK')) {
       this.fs.delete(this.destinationPath('server/routers/public.js'));
     }
 

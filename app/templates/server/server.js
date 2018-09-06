@@ -21,7 +21,7 @@ const server = http.createServer(app);
 app.use(log4js.connectLogger(logger, { level: process.env.LOG_LEVEL || 'info' }));
 const serviceManager = require('./services/service-manager');
 require('./services/index')(app);
-require('./routers/index')(app,server);
+require('./routers/index')(app, server);
 
 // Add your code here
 
