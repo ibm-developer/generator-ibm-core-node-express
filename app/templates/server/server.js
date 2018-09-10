@@ -21,20 +21,19 @@ const server = http.createServer(app);
 app.use(log4js.connectLogger(logger, { level: process.env.LOG_LEVEL || 'info' }));
 const serviceManager = require('./services/service-manager');
 require('./services/index')(app);
-require('./routers/index')(app,server);
+require('./routers/index')(app, server);
 
 // Add your code here
 
 const port = process.env.PORT || localConfig.port;
 server.listen(port, function(){
-  logger.info(`<%= bluemix.name %> listening on http://localhost:${port}/appmetrics-dash`);
-  <% if( !genSwagger ){ %>
-  logger.info(`<%= bluemix.name %> listening on http://localhost:${port}`);
-  <% } %>
-  <% if( genSwagger ){ %>
+  logger.info(`{{name}} listening on http://localhost:${port}/appmetrics-dash`);
+    {{#if genSwagger}}
   logger.info(`OpenAPI (Swagger) spec is available at http://localhost:${port}/swagger/api`);
   logger.info(`Swagger UI is available at http://localhost:${port}/explorer`);
-  <% } %>
+    {{else}}
+  logger.info(`{{name}} listening on http://localhost:${port}`);
+    {{/if}}
 });
 
 app.use(function (req, res, next) {

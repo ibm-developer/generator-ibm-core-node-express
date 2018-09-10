@@ -428,6 +428,10 @@ describe('core-node-express:app integration test with openApiServices', function
     assert.fileContent('server/routers/persons.js', 'router.get(\'/persons\', function (req, res, next) {');
     assert.file('server/routers/dinosaurs.js');
     assert.fileContent('server/routers/dinosaurs.js', 'router.get(\'/dinosaurs\', function (req, res, next) {');
+    assert.file('test/dinosaurs.js');
+    assert.fileContent('test/dinosaurs.js', 'it(\'Testing GET for /dinosaurs route\',function(done)');
+    assert.fileContent('server/routers/index.js', 'require(\'./persons\')(app, basepath);');
+    assert.fileContent('server/routers/swagger.js', './public/swagger.json');
   });
 
   it('did not create swagger.yaml', function () {
