@@ -483,9 +483,6 @@ describe('core-node-express:app integration test as blank', function () {
   this.timeout(150000);
 
   before(function () {
-		//let swagger = JSON.parse(fs.readFileSync(path.join(__dirname, '../test/resources/person_dino.json'), 'utf8'));
-
-		// let swagStr = JSON.stringify(swagger);
     return helpers.run(path.join(__dirname, '../app'))
   .withOptions({
     spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort, applicationType: 'MS' }),
