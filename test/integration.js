@@ -477,7 +477,7 @@ describe('core-node-express:app integration test as microservice', function () {
 
 });
 
-describe('core-node-express:app integration test as blank', function () {
+describe('core-node-express:app integration test as microservice', function () {
 
 	// Express build is slow so we need to set a longer timeout for the test
   this.timeout(150000);
