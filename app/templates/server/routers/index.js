@@ -2,22 +2,24 @@
 // Do not modify it as it might get overridden
 module.exports = function(app, server){
     {{#if parsedSwagger}}
-    {{#if parsedSwagger.basepath}}
+        {{#if parsedSwagger.basepath}}
     const basepath = "{{parsedSwagger.basepath}}";
-           {{else}}
+        {{else}}
     const basepath = '';
-     {{/if}}
-         {{#if genSwagger}}
+        {{/if}}
+    {{/if}}
+    
+    {{#if genSwagger}}
     require('./swagger')(app);
-         {{/if}}
-			 {{log parsedSwagger}}
-			 {{log spec}}
-             {{#genSwagger parsedSwagger spec}}
-             {{/genSwagger}}
+    {{/if}}
+             
+    {{#genPublic parsedSwagger spec}}
+    {{/genPublic}}
+    
+    {{#if parsedSwagger}}
+    {{#resourcePath parsedSwagger}}
+    {{/resourcePath}}
+    {{/if}}
+
     require('./health')(app);
-                 {{#if parsedSwagger}}
-                 {{#parsedSwagger parsedSwagger}}
-                 {{/parsedSwagger}}
-   {{/if}}
-   {{/if}}
 };

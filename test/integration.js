@@ -63,6 +63,15 @@ describe('core-node-express:app integration test with custom spec', function () 
     it('generates the expected application files', function () {
       assert.file(expected);
     });
+
+  });
+
+  describe('has a public directory', function () {
+		// Files which we assert are created each time the app generator is run.
+		// Takes an array of files, converted from obj by Object.values().
+    it('creates public route', function () {
+      assert.fileContent('server/routers/index.js', 'require(\'./public\')(app);');
+    })
   });
 
   describe(common.file.local, function () {
@@ -90,12 +99,12 @@ describe('core-node-express:app integration test with custom spec', function () 
           "appmetrics-prometheus": "^2.0.0",
           "body-parser": "^1.17.2",
           "express": "^4.15.3",
-          "log4js": "^1.1.1"
+          "log4js": "^3.0.5"
         },
         "devDependencies": {
           "chai": "^4.0.0",
-          "mocha": "^3.4.2",
-          "nyc": "^10.3.2"
+          "mocha": "^5.2.0",
+          "nyc": "^13.1.0"
         }
       });
     });
@@ -153,6 +162,7 @@ describe('core-node-express:app integration test with custom bluemix.fromYo flag
     it('contains the default port', function () {
       assert.jsonFileContent(common.file.local, { port: 3000 });
     });
+
   });
 
   describe(common.file.package_json, function () {
@@ -181,13 +191,13 @@ describe('core-node-express:app integration test with custom bluemix.fromYo flag
           "appmetrics-prometheus": "^2.0.0",
           "body-parser": "^1.17.2",
           "express": "^4.15.3",
-          "log4js": "^1.1.1",
+          "log4js": "^3.0.5",
           "strong-supervisor": "^6.2.0"
         },
         "devDependencies": {
           "chai": "^4.0.0",
-          "mocha": "^3.4.2",
-          "nyc": "^10.3.2"
+          "mocha": "^5.2.0",
+          "nyc": "^13.1.0"
         }
       });
     });
@@ -276,12 +286,12 @@ describe('core-node-express:app integration test with custom bluemix', function 
           "appmetrics-prometheus": "^2.0.0",
           "body-parser": "^1.17.2",
           "express": "^4.15.3",
-          "log4js": "^1.1.1"
+          "log4js": "^3.0.5"
         },
         "devDependencies": {
           "chai": "^4.0.0",
-          "mocha": "^3.4.2",
-          "nyc": "^10.3.2"
+          "mocha": "^5.2.0",
+          "nyc": "^13.1.0"
         }
       });
     });
@@ -371,12 +381,12 @@ describe('core-node-express:app integration test with custom bluemix and spec', 
           "appmetrics-prometheus": "^2.0.0",
           "body-parser": "^1.17.2",
           "express": "^4.15.3",
-          "log4js": "^1.1.1"
+          "log4js": "^3.0.5"
         },
         "devDependencies": {
           "chai": "^4.0.0",
-          "mocha": "^3.4.2",
-          "nyc": "^10.3.2"
+          "mocha": "^5.2.0",
+          "nyc": "^13.1.0"
         }
       });
     });
@@ -397,6 +407,7 @@ describe('core-node-express:app integration test with custom bluemix and spec', 
     it('contains custom app name', () => {
       assert.fileContent(common.file.server_js, 'logger.info(`ProjectName listening on http://localhost:${port}`);')
     });
+
   });
 
   describe(common.file.gitignore, function () {
@@ -431,12 +442,14 @@ describe('core-node-express:app integration test with openApiServices', function
     assert.file('test/dinosaurs.js');
     assert.fileContent('test/dinosaurs.js', 'it(\'Testing GET for /dinosaurs route\',function(done)');
     assert.fileContent('server/routers/index.js', 'require(\'./persons\')(app, basepath);');
-    assert.fileContent('server/routers/index.js', 'require(\'./public\')(app)');
     assert.fileContent('server/routers/swagger.js', './public/swagger.json');
   });
 
   it('did not create swagger.yaml', function () {
     assert.noFile('public/swagger.yaml');
+  })
+  it('no public route', function () {
+    assert.noFileContent('server/routers/index.js', 'require(\'./public\')(app);');
   })
 
 });
@@ -464,3 +477,69 @@ describe('core-node-express:app integration test as microservice', function () {
 
 });
 
+describe('core-node-express:app integration test as blank', function () {
+
+	// Express build is slow so we need to set a longer timeout for the test
+  this.timeout(150000);
+
+  before(function () {
+		//let swagger = JSON.parse(fs.readFileSync(path.join(__dirname, '../test/resources/person_dino.json'), 'utf8'));
+
+		// let swagStr = JSON.stringify(swagger);
+    return helpers.run(path.join(__dirname, '../app'))
+  .withOptions({
+    spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort, applicationType: 'MS' }),
+    bluemix: JSON.stringify({ name: PROJECT_NAME })
+  })
+ .toPromise(); // Get a Promise back when the generator finishes
+  });
+
+  it('creates health route', function () {
+    assert.fileContent('server/routers/index.js', 'require(\'./health\')(app);');
+  })
+
+});
+
+describe('core-node-express:app microservice integration test with openApiServices', function () {
+
+	// Express build is slow so we need to set a longer timeout for the test
+  this.timeout(150000);
+
+  before(function () {
+    let swagger = JSON.parse(fs.readFileSync(path.join(__dirname, '../test/resources/person_dino.json'), 'utf8'));
+    let swagStr = JSON.stringify(swagger);
+    return helpers.run(path.join(__dirname, '../app'))
+			.withOptions({
+  spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort, isDeployableContainer: true, applicationType: 'MS' }),
+  bluemix: JSON.stringify({ name: PROJECT_NAME, openApiServers: [{ spec: swagStr }] })
+})
+			.toPromise(); // Get a Promise back when the generator finishes
+  });
+
+  it('no public route', function () {
+    assert.noFileContent('server/routers/index.js', 'require(\'./public\')(app);');
+  })
+
+});
+
+describe('core-node-express:app blank integration test with openApiServices', function () {
+
+	// Express build is slow so we need to set a longer timeout for the test
+  this.timeout(150000);
+
+  before(function () {
+    let swagger = JSON.parse(fs.readFileSync(path.join(__dirname, '../test/resources/person_dino.json'), 'utf8'));
+    let swagStr = JSON.stringify(swagger);
+    return helpers.run(path.join(__dirname, '../app'))
+			.withOptions({
+  spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort, isDeployableContainer: true, applicationType: 'BLANK' }),
+  bluemix: JSON.stringify({ name: PROJECT_NAME, openApiServers: [{ spec: swagStr }] })
+})
+			.toPromise(); // Get a Promise back when the generator finishes
+  });
+
+  it('no public route', function () {
+    assert.noFileContent('server/routers/index.js', 'require(\'./public\')(app);');
+  })
+
+});
