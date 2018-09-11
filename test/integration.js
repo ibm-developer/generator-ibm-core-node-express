@@ -90,12 +90,12 @@ describe('core-node-express:app integration test with custom spec', function () 
           "appmetrics-prometheus": "^2.0.0",
           "body-parser": "^1.17.2",
           "express": "^4.15.3",
-          "log4js": "^1.1.1"
+          "log4js": "^3.0.5"
         },
         "devDependencies": {
           "chai": "^4.0.0",
-          "mocha": "^3.4.2",
-          "nyc": "^10.3.2"
+          "mocha": "^5.2.0",
+          "nyc": "^13.1.0"
         }
       });
     });
@@ -181,13 +181,13 @@ describe('core-node-express:app integration test with custom bluemix.fromYo flag
           "appmetrics-prometheus": "^2.0.0",
           "body-parser": "^1.17.2",
           "express": "^4.15.3",
-          "log4js": "^1.1.1",
+          "log4js": "^3.0.5",
           "strong-supervisor": "^6.2.0"
         },
         "devDependencies": {
           "chai": "^4.0.0",
-          "mocha": "^3.4.2",
-          "nyc": "^10.3.2"
+          "mocha": "^5.2.0",
+          "nyc": "^13.1.0"
         }
       });
     });
@@ -276,12 +276,12 @@ describe('core-node-express:app integration test with custom bluemix', function 
           "appmetrics-prometheus": "^2.0.0",
           "body-parser": "^1.17.2",
           "express": "^4.15.3",
-          "log4js": "^1.1.1"
+          "log4js": "^3.0.5"
         },
         "devDependencies": {
           "chai": "^4.0.0",
-          "mocha": "^3.4.2",
-          "nyc": "^10.3.2"
+          "mocha": "^5.2.0",
+          "nyc": "^13.1.0"
         }
       });
     });
@@ -371,12 +371,12 @@ describe('core-node-express:app integration test with custom bluemix and spec', 
           "appmetrics-prometheus": "^2.0.0",
           "body-parser": "^1.17.2",
           "express": "^4.15.3",
-          "log4js": "^1.1.1"
+          "log4js": "^3.0.5"
         },
         "devDependencies": {
           "chai": "^4.0.0",
-          "mocha": "^3.4.2",
-          "nyc": "^10.3.2"
+          "mocha": "^5.2.0",
+          "nyc": "^13.1.0"
         }
       });
     });
