@@ -120,7 +120,8 @@ module.exports = class extends Generator {
     this.fs.copyTpl(this.templatePath('server'), this.destinationPath('server'), this.options);
     this._writeHandlebarsFile('server/server.js', 'server/server.js', {
       genSwagger: this.options.genSwagger,
-      name: this.options.bluemix.name || this.options.spec.appname
+      name: this.options.bluemix.name || this.options.spec && this.options.spec.appname,
+      applicationType: this.options.spec && this.options.spec.applicationType
     });
     this._writeHandlebarsFile('server/routers/swagger.js', 'server/routers/swagger.js', {
       openApiFileType: this.options.openApiFileType,
