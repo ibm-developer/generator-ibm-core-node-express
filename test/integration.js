@@ -460,29 +460,6 @@ describe('core-node-express:app integration test as microservice', function () {
   this.timeout(150000);
 
   before(function () {
-    //let swagger = JSON.parse(fs.readFileSync(path.join(__dirname, '../test/resources/person_dino.json'), 'utf8'));
-
-    // let swagStr = JSON.stringify(swagger);
-    return helpers.run(path.join(__dirname, '../app'))
-      .withOptions({
-        spec: JSON.stringify({ appname: 'testApp', applicationType: 'MS' }),
-        bluemix: JSON.stringify({ name: PROJECT_NAME })
-      })
-      .toPromise(); // Get a Promise back when the generator finishes
-  });
-
-  it('create swagger.yaml', function () {
-    assert.file('public/swagger.yaml');
-  })
-
-});
-
-describe('core-node-express:app integration test as microservice', function () {
-
-	// Express build is slow so we need to set a longer timeout for the test
-  this.timeout(150000);
-
-  before(function () {
     return helpers.run(path.join(__dirname, '../app'))
   .withOptions({
     spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort, applicationType: 'MS' }),
@@ -495,11 +472,15 @@ describe('core-node-express:app integration test as microservice', function () {
     assert.fileContent('server/routers/index.js', 'require(\'./health\')(app);');
   })
 
+  it('create swagger.yaml', function () {
+    assert.file('public/swagger.yaml');
+  })
+
 });
 
 describe('core-node-express:app microservice integration test with openApiServices', function () {
 
-	// Express build is slow so we need to set a longer timeout for the test
+  // Express build is slow so we need to set a longer timeout for the test
   this.timeout(150000);
 
   before(function () {
@@ -521,7 +502,7 @@ describe('core-node-express:app microservice integration test with openApiServic
 
 describe('core-node-express:app blank integration test with openApiServices', function () {
 
-	// Express build is slow so we need to set a longer timeout for the test
+  // Express build is slow so we need to set a longer timeout for the test
   this.timeout(150000);
 
   before(function () {
