@@ -448,6 +448,7 @@ describe('core-node-express:app integration test with openApiServices', function
   it('did not create swagger.yaml', function () {
     assert.noFile('public/swagger.yaml');
   })
+
   it('no public route', function () {
     assert.noFileContent('server/routers/index.js', 'require(\'./public\')(app);');
   })
@@ -455,10 +456,8 @@ describe('core-node-express:app integration test with openApiServices', function
 });
 
 describe('core-node-express:app integration test as microservice', function () {
-
   // Express build is slow so we need to set a longer timeout for the test
   this.timeout(150000);
-
   before(function () {
     return helpers.run(path.join(__dirname, '../app'))
   .withOptions({
@@ -479,10 +478,8 @@ describe('core-node-express:app integration test as microservice', function () {
 });
 
 describe('core-node-express:app microservice integration test with openApiServices', function () {
-
   // Express build is slow so we need to set a longer timeout for the test
   this.timeout(150000);
-
   before(function () {
     let swagger = JSON.parse(fs.readFileSync(path.join(__dirname, '../test/resources/person_dino.json'), 'utf8'));
     let swagStr = JSON.stringify(swagger);
@@ -497,11 +494,9 @@ describe('core-node-express:app microservice integration test with openApiServic
   it('no public route', function () {
     assert.noFileContent('server/routers/index.js', 'require(\'./public\')(app);');
   })
-
 });
 
 describe('core-node-express:app blank integration test with openApiServices', function () {
-
   // Express build is slow so we need to set a longer timeout for the test
   this.timeout(150000);
 
