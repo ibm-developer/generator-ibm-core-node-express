@@ -17,8 +17,8 @@ module.exports = function(app, server){
     {{/genPublic}}
     
     {{#if parsedSwagger}}
-    {{#parsedSwagger parsedSwagger}}
-    {{/parsedSwagger}}
+    {{#resourcePath parsedSwagger}}
+    {{/resourcePath}}
     {{/if}}
 
     require('./health')(app);
