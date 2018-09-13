@@ -128,7 +128,8 @@ module.exports = class extends Generator {
     });
     this._writeHandlebarsFile('server/routers/index.js', 'server/routers/index.js', {
       parsedSwagger: this.options.parsedSwagger,
-      genSwagger: this.options.genSwagger
+      genSwagger: this.options.genSwagger,
+      applicationType: this.options.spec && this.options.spec.applicationType
     });
 
 
