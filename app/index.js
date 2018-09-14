@@ -17,6 +17,7 @@ const Bundle = require("./../package.json");
 const Log4js = require('log4js');
 const logger = Log4js.getLogger("generator-ibm-core-node-express");
 const helpers = require('../lib/helpers');
+const Handlebars = require('../lib/handlebars.js');
 const swaggerize = require('ibm-openapi-support');
 const OPTION_BLUEMIX = "bluemix";
 const OPTION_SPEC = "spec";
@@ -117,24 +118,45 @@ module.exports = class extends Generator {
   writing() {
 
     this.fs.copyTpl(this.templatePath('server'), this.destinationPath('server'), this.options);
+    this._writeHandlebarsFile('server/server.js', 'server/server.js', {
+      genSwagger: this.options.genSwagger,
+      name: this.options.bluemix.name || this.options.spec && this.options.spec.appname,
+      applicationType: this.options.spec && this.options.spec.applicationType
+    });
+    this._writeHandlebarsFile('server/routers/swagger.js', 'server/routers/swagger.js', {
+      openApiFileType: this.options.openApiFileType,
+    });
+    this._writeHandlebarsFile('server/routers/index.js', 'server/routers/index.js', {
+      parsedSwagger: this.options.parsedSwagger,
+      genSwagger: this.options.genSwagger,
+      applicationType: this.options.spec && this.options.spec.applicationType
+    });
+
 
     if (this.options.parsedSwagger) {
       Object.keys(this.options.parsedSwagger.resources).forEach(function(resource) {
-        let context = {
+        this._writeHandlebarsFile('fromswagger/routers/router.js', `server/routers/${resource}.js`, {
           'resource': resource,
           'routes': this.options.parsedSwagger.resources[resource],
-          'basepath': this.options.parsedSwagger.basepath
-        };
-        this.fs.copyTpl(this.templatePath('fromswagger/routers/router.js'), this.destinationPath(`server/routers/${resource}.js`), context);
-        this.fs.copyTpl(this.templatePath('test/resource.js'), this.destinationPath(`test/${resource}.js`), context);
+          'basepath': this.options.parsedSwagger.basepath,
+        });
+        this._writeHandlebarsFile('test/resource.js', `test/${resource}.js`, {
+          'resource': resource,
+          'routes': this.options.parsedSwagger.resources[resource],
+          'basepath': this.options.parsedSwagger.basepath,
+        });
       }.bind(this));
     }
 
     this.fs.copyTpl(this.templatePath('test/test-server.js'), this.destinationPath('test/test-server.js'), this.options);
     this.fs.copyTpl(this.templatePath('test/test-demo.js'), this.destinationPath('test/test-demo.js'), this.options);
     this.fs.copyTpl(this.templatePath('_gitignore'), this.destinationPath('.gitignore'), this.options);
-    this.fs.copyTpl(this.templatePath('package.json'), this.destinationPath('package.json'), this.options);
-    this.fs.copyTpl(this.templatePath('README.md'), this.destinationPath('README.md'), this.options);
+    this._writeHandlebarsFile('package.json', 'package.json', {
+      name: this.options.sanitizedAppName
+    });
+    this._writeHandlebarsFile('README.md', 'README.md', {
+      name: this.options.bluemix.name || this.options.spec.appname
+    });
 
     // if project will have swagger doc, ensure swagger ui and api route
     if ( this.options.genSwagger ) {
@@ -147,7 +169,9 @@ module.exports = class extends Generator {
         this.fs.write('public/swagger.'+this.options.openApiFileType, yaml);
       }
       else {
-        this.fs.copyTpl(this.templatePath('public/swagger.yaml'), this.destinationPath('public/swagger.yaml'), this.options);
+        this._writeHandlebarsFile('public/swagger.yaml', 'public/swagger.yaml', {
+          name: this.options.sanitizedAppName
+        });
       }
     }
     else {
@@ -155,7 +179,7 @@ module.exports = class extends Generator {
     }
 
     // if there is swagger, there is no index page
-    if( this.options.genSwagger ) {
+    if( this.options.genSwagger || (this.options.spec && this.options.spec.applicationType === 'BLANK')) {
       this.fs.delete(this.destinationPath('server/routers/public.js'));
     }
 
@@ -177,6 +201,13 @@ module.exports = class extends Generator {
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, 0o755);
     }
+  }
+
+  _writeHandlebarsFile(templateFile, destinationFile, data) {
+    let template = this.fs.read(this.templatePath(templateFile));
+    let compiledTemplate = Handlebars.compile(template);
+    let output = compiledTemplate(data);
+    this.fs.write(this.destinationPath(destinationFile), output);
   }
 
   _sanitizeAppName(name) {

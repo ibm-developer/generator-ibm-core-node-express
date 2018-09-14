@@ -4,3 +4,4 @@ node_modules/
 app/templates/
 coverage/
 lib/
+fragments/
