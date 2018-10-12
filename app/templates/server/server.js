@@ -37,3 +37,5 @@ server.listen(port, function(){
 });
 {{#errorRoutes applicationType}}
 {{/errorRoutes}}
+
+module.exports = server;
