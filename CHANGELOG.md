@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.6"></a>
+## [3.0.6](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v3.0.5...v3.0.6) (2018-10-11)
+
+
+### Bug Fixes
+
+* adding new test to debug public route ([5429c0f](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/5429c0f))
+* blank starter / route ([c9cb2d0](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/c9cb2d0))
+* combining some test cases ([ea0dfea](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/ea0dfea))
+* fixed Jennie's suggestions ([e894cd0](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/e894cd0))
+* fixed Jennie's suggestions part 2 ([88c668f](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/88c668f))
+* fixed spacing ([65f6065](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/65f6065))
+* getting rid of ejs tags ([40f3ddd](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/40f3ddd))
+* got rid of some unnecessary handlebars code ([d9cd0f9](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/d9cd0f9))
+* handlebar issue with route ([f8aaad9](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/f8aaad9))
+* public path not found for blank starter ([aaac841](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/aaac841))
+* public route ([18776dd](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/18776dd))
+
+
+
 <a name="3.0.5"></a>
 ## [3.0.5](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v3.0.4...v3.0.5) (2018-08-21)
 
