@@ -3,11 +3,12 @@ var http = require('http');
 
 // Below code demonstrates using various methods of testing
 describe('Testing Server', function() {
+  let test_server;
+  this.timeout(0);
 
-  before(function(done){
-    require(process.cwd() + '/server/server');
-    setTimeout(done, 5000); // Waiting 5 seconds for server to start
-    this.timeout(10000);
+  before(done => {
+    let app = require(process.cwd() + '/server/server');
+    test_server = app.listen(process.env.PORT || 3000, done);
   });
 
   it('Health endpoint shows status up', function(done){
@@ -31,5 +32,9 @@ describe('Testing Server', function() {
     };
 
     http.request(options, callback).end();
+  });
+
+  after(done => {
+    test_server.close(done);
   });
 });
