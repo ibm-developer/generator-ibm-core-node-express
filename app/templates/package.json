@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node server/server.js",
     "debug": "chmod +x run-debug && ./run-debug",
-    "test": "nyc mocha",
+    "test": "nyc mocha --exit",
     "dev": "nodemon server/server.js"
   },
   "nodemonConfig": {
