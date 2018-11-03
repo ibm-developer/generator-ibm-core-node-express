@@ -91,7 +91,7 @@ describe('core-node-express:app integration test with custom spec', function () 
         },
         "scripts": {
           "start": "node server/server.js",
-          "debug": "chmod +x run-debug && ./run-debug",
+          "debug": "node --inspect=0.0.0.0:9229 server/server.js",
           "test": "nyc mocha --exit"
         },
         "dependencies": {
