@@ -13,7 +13,7 @@ module.exports = function(app, server){
     require('./swagger')(app);
     {{/if}}
              
-    {{#genPublic parsedSwagger spec}}
+    {{#genPublic parsedSwagger applicationType}}
     {{/genPublic}}
     
     {{#if parsedSwagger}}

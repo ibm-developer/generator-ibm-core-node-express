@@ -91,8 +91,8 @@ describe('core-node-express:app integration test with custom spec', function () 
         },
         "scripts": {
           "start": "node server/server.js",
-          "debug": "chmod +x run-debug && ./run-debug",
-          "test": "nyc mocha"
+          "debug": "node --inspect=0.0.0.0:9229 server/server.js",
+          "test": "nyc mocha --exit"
         },
         "dependencies": {
           "appmetrics-dash": "^4.0.0",
@@ -176,7 +176,7 @@ describe('core-node-express:app integration test with custom bluemix.fromYo flag
         },
         "scripts": {
           "start": "node server/server.js",
-          "test": "nyc mocha",
+          "test": "nyc mocha --exit",
           "start:cluster": "sl-run server/server.js",
           "build": "npm run build:idt",
           "idt:build": "node idt.js build",
@@ -279,7 +279,7 @@ describe('core-node-express:app integration test with custom bluemix', function 
         },
         "scripts": {
           "start": "node server/server.js",
-          "test": "nyc mocha"
+          "test": "nyc mocha --exit"
         },
         "dependencies": {
           "appmetrics-dash": "^4.0.0",
@@ -374,7 +374,7 @@ describe('core-node-express:app integration test with custom bluemix and spec', 
         },
         "scripts": {
           "start": "node server/server.js",
-          "test": "nyc mocha"
+          "test": "nyc mocha --exit"
         },
         "dependencies": {
           "appmetrics-dash": "^4.0.0",
