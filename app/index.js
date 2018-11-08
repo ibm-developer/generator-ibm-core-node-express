@@ -184,11 +184,6 @@ module.exports = class extends Generator {
       this.fs.delete(this.destinationPath('server/routers/swagger.js'));
     }
 
-    // if there is swagger, there is no index page
-    if( this.options.genSwagger || (this.options.spec && this.options.spec.applicationType === 'BLANK')) {
-      this.fs.delete(this.destinationPath('server/routers/public.js'));
-    }
-
     // Additional scripts for generation via yo
     if(this.options.bluemix.fromYo) {
       this.fs.copyTpl(this.templatePath('idt.js'), this.destinationPath('idt.js'), this.options);
