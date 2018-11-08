@@ -132,13 +132,6 @@ module.exports = class extends Generator {
       applicationType: this.options.spec && this.options.spec.applicationType
     });
 
-    if(this.options.spec && (this.options.spec.applicationType === 'MS' || this.options.spec.applicationType === 'BLANK')) {
-      this._writeHandlebarsFile('server/routers/health.js', 'server/routers/health.js', {
-        appType: this.options.spec.applicationType
-      });
-    }
-
-
     if (this.options.parsedSwagger) {
       Object.keys(this.options.parsedSwagger.resources).forEach(function(resource) {
         this._writeHandlebarsFile('fromswagger/routers/router.js', `server/routers/${resource}.js`, {
