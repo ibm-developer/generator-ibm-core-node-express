@@ -8,12 +8,6 @@ module.exports = function(app) {
   });
 
   app.use("/health", router);
-  {{#ifCond appType '===' 'MS'}}
-  app.use("/", router);
-  {{/ifCond}}
-  {{#ifCond appType '===' 'BLANK'}}
-  app.use("/", router);
-  {{/ifCond}}
 }
 
 
