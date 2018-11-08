@@ -132,7 +132,6 @@ module.exports = class extends Generator {
       applicationType: this.options.spec && this.options.spec.applicationType
     });
 
-
     if (this.options.parsedSwagger) {
       Object.keys(this.options.parsedSwagger.resources).forEach(function(resource) {
         this._writeHandlebarsFile('fromswagger/routers/router.js', `server/routers/${resource}.js`, {
@@ -176,11 +175,6 @@ module.exports = class extends Generator {
     }
     else {
       this.fs.delete(this.destinationPath('server/routers/swagger.js'));
-    }
-
-    // if there is swagger, there is no index page
-    if( this.options.genSwagger || (this.options.spec && this.options.spec.applicationType === 'BLANK')) {
-      this.fs.delete(this.destinationPath('server/routers/public.js'));
     }
 
     // Additional scripts for generation via yo
