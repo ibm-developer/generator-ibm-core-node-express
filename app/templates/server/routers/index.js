@@ -12,14 +12,11 @@ module.exports = function(app, server){
     {{#if genSwagger}}
     require('./swagger')(app);
     {{/if}}
-             
-    {{#genPublic parsedSwagger applicationType}}
-    {{/genPublic}}
     
     {{#if parsedSwagger}}
     {{#resourcePath parsedSwagger}}
     {{/resourcePath}}
     {{/if}}
-
+    require('./public')(app);
     require('./health')(app);
 };

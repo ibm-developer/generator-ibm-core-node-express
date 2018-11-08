@@ -449,8 +449,8 @@ describe('core-node-express:app integration test with openApiServices', function
     assert.noFile('public/swagger.yaml');
   })
 
-  it('no public route', function () {
-    assert.noFileContent('server/routers/index.js', 'require(\'./public\')(app);');
+  it('public route', function () {
+    assert.fileContent('server/routers/index.js', 'require(\'./public\')(app);');
   })
 
 });
@@ -491,8 +491,8 @@ describe('core-node-express:app microservice integration test with openApiServic
 			.toPromise(); // Get a Promise back when the generator finishes
   });
 
-  it('no public route', function () {
-    assert.noFileContent('server/routers/index.js', 'require(\'./public\')(app);');
+  it('public route', function () {
+    assert.fileContent('server/routers/index.js', 'require(\'./public\')(app);');
   })
 });
 
@@ -511,8 +511,8 @@ describe('core-node-express:app blank integration test with openApiServices', fu
 			.toPromise(); // Get a Promise back when the generator finishes
   });
 
-  it('no public route', function () {
-    assert.noFileContent('server/routers/index.js', 'require(\'./public\')(app);');
+  it('public route', function () {
+    assert.fileContent('server/routers/index.js', 'require(\'./public\')(app);');
   })
 
 });
