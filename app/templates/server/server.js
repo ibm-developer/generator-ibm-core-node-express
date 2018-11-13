@@ -11,10 +11,12 @@ const appName = require('./../package').name;
 const http = require('http');
 const express = require('express');
 const log4js = require('log4js');
+const DEFAULT_LOG_LEVEL = log4js.levels.INFO;
 const localConfig = require('./config/local.json');
 const path = require('path');
 
 const logger = log4js.getLogger(appName);
+logger.level = DEFAULT_LOG_LEVEL;
 const app = express();
 const server = http.createServer(app);
 
