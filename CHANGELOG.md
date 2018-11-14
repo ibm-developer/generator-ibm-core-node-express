@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.8"></a>
+## [3.0.8](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v3.0.6...v3.0.8) (2018-11-14)
+
+
+### Bug Fixes
+
+* **test:** Use callback instead of timeout for server test ([3e1d124](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/3e1d124))
+* add logger level to server ([d5bb1a1](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/d5bb1a1))
+* add public.js to microservice and blank project ([7c98fea](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/7c98fea))
+* adding back orginal file content ([2b6946c](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/2b6946c))
+* adding landing page to microservice, bff, and blank node starters ([96c393b](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/96c393b))
+* change debug options ([bb93b1e](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/bb93b1e))
+* health json is root route for microservice, blank, and bff ([7bcd867](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/7bcd867))
+* require bluemix option ([f5ebf8e](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/f5ebf8e))
+* set logger level to env var value ([569ffb2](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/569ffb2))
+* we need the index page now ([4f03939](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/4f03939))
+
+
+
 <a name="3.0.7"></a>
 ## [3.0.7](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v3.0.6...v3.0.7) (2018-10-18)
 

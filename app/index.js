@@ -53,16 +53,15 @@ module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    // bluemix option for YaaS integration
-    this.argument(OPTION_BLUEMIX, {
+    this.option(OPTION_BLUEMIX, {
       desc: 'Option for deploying with Bluemix. Stringified JSON.',
-      required: false,
+      required: true,
       hide: true,
       type: String
-    });
+    })
 
     // spec as json
-    this.argument(OPTION_SPEC, {
+    this.option(OPTION_SPEC, {
       desc: 'The generator specification. Stringified JSON.',
       required: false,
       hide: true,
@@ -73,8 +72,9 @@ module.exports = class extends Generator {
   initializing() {
     this.skipPrompt = true;
     let bluemix_ok= this._sanitizeOption(this.options, OPTION_BLUEMIX);
-    let spec_ok= this._sanitizeOption(this.options, OPTION_SPEC);
-    if ( ! (bluemix_ok || spec_ok )) throw ("Must specify either bluemix or spec parameter");
+    this._sanitizeOption(this.options, OPTION_SPEC)
+
+    if ( ! (bluemix_ok )) throw ("Must specify bluemix parameter");
 
     if ( typeof this.options.bluemix.quiet == "undefined" || ! this.options.bluemix.quiet ) {
       logger.info("Package info ::", Bundle.name, Bundle.version);
@@ -132,7 +132,6 @@ module.exports = class extends Generator {
       applicationType: this.options.spec && this.options.spec.applicationType
     });
 
-
     if (this.options.parsedSwagger) {
       Object.keys(this.options.parsedSwagger.resources).forEach(function(resource) {
         this._writeHandlebarsFile('fromswagger/routers/router.js', `server/routers/${resource}.js`, {
@@ -176,11 +175,6 @@ module.exports = class extends Generator {
     }
     else {
       this.fs.delete(this.destinationPath('server/routers/swagger.js'));
-    }
-
-    // if there is swagger, there is no index page
-    if( this.options.genSwagger || (this.options.spec && this.options.spec.applicationType === 'BLANK')) {
-      this.fs.delete(this.destinationPath('server/routers/public.js'));
     }
 
     // Additional scripts for generation via yo

@@ -15,10 +15,11 @@ const localConfig = require('./config/local.json');
 const path = require('path');
 
 const logger = log4js.getLogger(appName);
+logger.level = process.env.LOG_LEVEL || 'info'
 const app = express();
 const server = http.createServer(app);
 
-app.use(log4js.connectLogger(logger, { level: process.env.LOG_LEVEL || 'info' }));
+app.use(log4js.connectLogger(logger, { level: logger.level }));
 const serviceManager = require('./services/service-manager');
 require('./services/index')(app);
 require('./routers/index')(app, server);
@@ -35,7 +36,13 @@ server.listen(port, function(){
   logger.info(`{{name}} listening on http://localhost:${port}`);
     {{/if}}
 });
-{{#errorRoutes applicationType}}
-{{/errorRoutes}}
+
+app.use(function (req, res, next) {
+  res.sendFile(path.join(__dirname, '../public', '404.html'));
+});
+
+app.use(function (err, req, res, next) {
+	res.sendFile(path.join(__dirname, '../public', '500.html'));
+});
 
 module.exports = server;

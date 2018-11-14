@@ -23,24 +23,6 @@ const helpers = require('yeoman-test');
 const fs = require('fs');
 const PROJECT_NAME = "ProjectName";
 
-
-
-
-describe('error thrown when bluemix parameter is missing', function () {
-
-  before(function () {
-    // Mock the options, set up an output folder and run the generator
-    return helpers.run(path.join(__dirname, '../app'))
-      .withOptions({}) // No parameters!!
-      .on('error', function () {
-        assert(true);
-      })
-      .toPromise( function() { // Should never return a promise
-        assert(false)
-      })
-  });
-});
-
 describe('core-node-express:app integration test with custom spec', function () {
   // Express build is slow so we need to set a longer timeout for the test
   this.timeout(150000);
@@ -49,8 +31,8 @@ describe('core-node-express:app integration test with custom spec', function () 
     // Mock the options, set up an output folder and run the generator
     return helpers.run(path.join(__dirname, '../app'))
       .withOptions({
-        spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort }),
-        bluemix: JSON.stringify({ name: PROJECT_NAME })
+        bluemix: JSON.stringify({ name: PROJECT_NAME }),
+        spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort })
       })
       .toPromise(); // Get a Promise back when the generator finishes
   });
@@ -67,8 +49,8 @@ describe('core-node-express:app integration test with custom spec', function () 
   });
 
   describe('has a public directory', function () {
-		// Files which we assert are created each time the app generator is run.
-		// Takes an array of files, converted from obj by Object.values().
+    // Files which we assert are created each time the app generator is run.
+    // Takes an array of files, converted from obj by Object.values().
     it('creates public route', function () {
       assert.fileContent('server/routers/index.js', 'require(\'./public\')(app);');
     })
@@ -91,7 +73,7 @@ describe('core-node-express:app integration test with custom spec', function () 
         },
         "scripts": {
           "start": "node server/server.js",
-          "debug": "chmod +x run-debug && ./run-debug",
+          "debug": "node --inspect=0.0.0.0:9229 server/server.js",
           "test": "nyc mocha --exit"
         },
         "dependencies": {
@@ -449,8 +431,8 @@ describe('core-node-express:app integration test with openApiServices', function
     assert.noFile('public/swagger.yaml');
   })
 
-  it('no public route', function () {
-    assert.noFileContent('server/routers/index.js', 'require(\'./public\')(app);');
+  it('public route', function () {
+    assert.fileContent('server/routers/index.js', 'require(\'./public\')(app);');
   })
 
 });
@@ -460,11 +442,11 @@ describe('core-node-express:app integration test as microservice', function () {
   this.timeout(150000);
   before(function () {
     return helpers.run(path.join(__dirname, '../app'))
-  .withOptions({
-    spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort, applicationType: 'MS' }),
-    bluemix: JSON.stringify({ name: PROJECT_NAME })
-  })
- .toPromise(); // Get a Promise back when the generator finishes
+      .withOptions({
+        spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort, applicationType: 'MS' }),
+        bluemix: JSON.stringify({ name: PROJECT_NAME })
+      })
+      .toPromise(); // Get a Promise back when the generator finishes
   });
 
   it('creates health route', function () {
@@ -484,15 +466,15 @@ describe('core-node-express:app microservice integration test with openApiServic
     let swagger = JSON.parse(fs.readFileSync(path.join(__dirname, '../test/resources/person_dino.json'), 'utf8'));
     let swagStr = JSON.stringify(swagger);
     return helpers.run(path.join(__dirname, '../app'))
-			.withOptions({
-  spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort, isDeployableContainer: true, applicationType: 'MS' }),
-  bluemix: JSON.stringify({ name: PROJECT_NAME, openApiServers: [{ spec: swagStr }] })
-})
-			.toPromise(); // Get a Promise back when the generator finishes
+      .withOptions({
+        spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort, isDeployableContainer: true, applicationType: 'MS' }),
+        bluemix: JSON.stringify({ name: PROJECT_NAME, openApiServers: [{ spec: swagStr }] })
+      })
+      .toPromise(); // Get a Promise back when the generator finishes
   });
 
-  it('no public route', function () {
-    assert.noFileContent('server/routers/index.js', 'require(\'./public\')(app);');
+  it('public route', function () {
+    assert.fileContent('server/routers/index.js', 'require(\'./public\')(app);');
   })
 });
 
@@ -504,15 +486,15 @@ describe('core-node-express:app blank integration test with openApiServices', fu
     let swagger = JSON.parse(fs.readFileSync(path.join(__dirname, '../test/resources/person_dino.json'), 'utf8'));
     let swagStr = JSON.stringify(swagger);
     return helpers.run(path.join(__dirname, '../app'))
-			.withOptions({
-  spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort, isDeployableContainer: true, applicationType: 'BLANK' }),
-  bluemix: JSON.stringify({ name: PROJECT_NAME, openApiServers: [{ spec: swagStr }] })
-})
-			.toPromise(); // Get a Promise back when the generator finishes
+      .withOptions({
+        spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort, isDeployableContainer: true, applicationType: 'BLANK' }),
+        bluemix: JSON.stringify({ name: PROJECT_NAME, openApiServers: [{ spec: swagStr }] })
+      })
+      .toPromise(); // Get a Promise back when the generator finishes
   });
 
-  it('no public route', function () {
-    assert.noFileContent('server/routers/index.js', 'require(\'./public\')(app);');
+  it('public route', function () {
+    assert.fileContent('server/routers/index.js', 'require(\'./public\')(app);');
   })
 
 });
