@@ -52,15 +52,15 @@ module.exports = class extends Generator {
 
   constructor(args, opts) {
     super(args, opts);
-    this.option(OPTION_BLUEMIX, {
+    this.argument(OPTION_BLUEMIX, {
       desc: 'Option for deploying with Bluemix. Stringified JSON.',
-      required: true,
+      required: false,
       hide: true,
       type: Object
     })
 
     // spec as json
-    this.option(OPTION_SPEC, {
+    this.argument(OPTION_SPEC, {
       desc: 'The generator specification. Stringified JSON.',
       required: false,
       hide: true,
@@ -218,8 +218,7 @@ module.exports = class extends Generator {
 
     try {
       this.options[name] = typeof(this.options[name]) === "string" ?
-      JSON.parse(this.options[name]) : 
-      JSON.parse(JSON.stringify(this.options[name]));
+      JSON.parse(this.options[name]) : this.options[name];
 
       return true;    
     } catch (e) {
