@@ -52,12 +52,11 @@ module.exports = class extends Generator {
 
   constructor(args, opts) {
     super(args, opts);
-
     this.option(OPTION_BLUEMIX, {
       desc: 'Option for deploying with Bluemix. Stringified JSON.',
       required: true,
       hide: true,
-      type: String
+      type: Object
     })
 
     // spec as json
@@ -65,7 +64,7 @@ module.exports = class extends Generator {
       desc: 'The generator specification. Stringified JSON.',
       required: false,
       hide: true,
-      type: String
+      type: Object
     });
   }
 
@@ -73,7 +72,7 @@ module.exports = class extends Generator {
     this.skipPrompt = true;
     let bluemix_ok= this._sanitizeOption(this.options, OPTION_BLUEMIX);
     this._sanitizeOption(this.options, OPTION_SPEC)
-
+    
     if ( ! (bluemix_ok )) throw ("Must specify bluemix parameter");
 
     if ( typeof this.options.bluemix.quiet == "undefined" || ! this.options.bluemix.quiet ) {
@@ -219,8 +218,10 @@ module.exports = class extends Generator {
 
     try {
       this.options[name] = typeof(this.options[name]) === "string" ?
-      JSON.parse(this.options[name]) : this.options[name];
-      return true;
+      JSON.parse(this.options[name]) : 
+      JSON.parse(JSON.stringify(this.options[name]));
+
+      return true;    
     } catch (e) {
       logger.error(e);
       throw name + " parameter is expected to be a valid stringified JSON object";
