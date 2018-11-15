@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.9"></a>
+## [3.0.9](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v3.0.8...v3.0.9) (2018-11-15)
+
+
+### Bug Fixes
+
+* options are objects not strings ([b17c5b1](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/b17c5b1))
+* require bluemix option ([ab6d104](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/ab6d104))
+* revert required argument ([fcc4d31](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/fcc4d31))
+* revert type change ([3a37d7a](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/3a37d7a))
+
+
+
 <a name="3.0.8"></a>
 ## [3.0.8](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v3.0.6...v3.0.8) (2018-11-14)
 
