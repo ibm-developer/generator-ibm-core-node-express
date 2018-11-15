@@ -56,7 +56,7 @@ module.exports = class extends Generator {
       desc: 'Option for deploying with Bluemix. Stringified JSON.',
       required: false,
       hide: true,
-      type: Object
+      type: String
     })
 
     // spec as json
@@ -64,7 +64,7 @@ module.exports = class extends Generator {
       desc: 'The generator specification. Stringified JSON.',
       required: false,
       hide: true,
-      type: Object
+      type: String
     });
   }
 
