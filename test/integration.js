@@ -72,8 +72,8 @@ describe('core-node-express:app integration test with custom spec', function () 
           "node": "^8.11.1"
         },
         "scripts": {
-          "start": "node server/server.js",
-          "debug": "node --inspect=0.0.0.0:9229 server/server.js",
+          "start": "node $npm_package_config_entrypoint",
+          "debug": "node --inspect=0.0.0.0:9229 $npm_package_config_entrypoint",
           "test": "nyc mocha --exit"
         },
         "dependencies": {
@@ -157,7 +157,7 @@ describe('core-node-express:app integration test with custom bluemix.fromYo flag
           "node": "^8.11.1"
         },
         "scripts": {
-          "start": "node server/server.js",
+          "start": "node $npm_package_config_entrypoint",
           "test": "nyc mocha --exit",
           "start:cluster": "sl-run server/server.js",
           "build": "npm run build:idt",
@@ -260,7 +260,7 @@ describe('core-node-express:app integration test with custom bluemix', function 
           "node": "^8.11.1"
         },
         "scripts": {
-          "start": "node server/server.js",
+          "start": "node $npm_package_config_entrypoint",
           "test": "nyc mocha --exit"
         },
         "dependencies": {
@@ -355,7 +355,7 @@ describe('core-node-express:app integration test with custom bluemix and spec', 
           "node": "^8.11.1"
         },
         "scripts": {
-          "start": "node server/server.js",
+          "start": "node $npm_package_config_entrypoint",
           "test": "nyc mocha --exit"
         },
         "dependencies": {
