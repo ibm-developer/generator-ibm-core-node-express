@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.1.0"></a>
+# [3.1.0](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v3.0.9...v3.1.0) (2018-12-17)
+
+
+### Bug Fixes
+
+* add configurable entrypoint ([4039ae6](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/4039ae6))
+
+
+### Features
+
+* Add debug:brk script ([5c65a44](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/5c65a44))
+
+
+
 <a name="3.0.9"></a>
 ## [3.0.9](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v3.0.8...v3.0.9) (2018-11-15)
 
