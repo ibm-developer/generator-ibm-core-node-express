@@ -65,8 +65,6 @@ File  | Purpose
 README.md | Instructions for building, running, and deploying the project
 package.json | JSON file containing project info, scripts, nodemonConfig, and dependencies
 public/* | Folder containing files for server landing page (specifically public/index.html)
-run-debug | Simple shell script to run debug mode
-run-dev | Simple shell script to run application in dev mode
 server/* | Folder containing server configuration files (specifically server/server.js)
 test/* | Folder containing JSON files for running code tests (npm test)
 
