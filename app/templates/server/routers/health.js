@@ -7,7 +7,7 @@ module.exports = function(app) {
     res.json({status: 'UP'});
   });
 
-  app.use("/health", router);
+  app.use('/health', router);
 }
 
 

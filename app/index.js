@@ -13,14 +13,14 @@
 
 'use strict';
 const Generator = require('yeoman-generator');
-const Bundle = require("./../package.json");
+const Bundle = require('./../package.json');
 const Log4js = require('log4js');
-const logger = Log4js.getLogger("generator-ibm-core-node-express");
+const logger = Log4js.getLogger('generator-ibm-core-node-express');
 const helpers = require('../lib/helpers');
 const Handlebars = require('../lib/handlebars.js');
 const swaggerize = require('ibm-openapi-support');
-const OPTION_BLUEMIX = "bluemix";
-const OPTION_SPEC = "spec";
+const OPTION_BLUEMIX = 'bluemix';
+const OPTION_SPEC = 'spec';
 const process= require('process');
 const fs= require('fs');
 
@@ -28,24 +28,24 @@ const REGEX_LEADING_ALPHA = /^[^a-zA-Z]*/;
 const REGEX_ALPHA_NUM = /[^a-zA-Z0-9]/g;
 
 const extraScriptForYoGenerated = {
-  "start:cluster": "sl-run server/server.js",
-  "build": "npm run build:idt",
-  "idt:build": "node idt.js build",
-  "idt:test": "node idt.js test",
-  "idt:debug": "node idt.js debug",
-  "idt:run": "node idt.js run",
-  "idt:deploy": "node idt.js deploy",
-  "idt:install": "node idt.js install"
+  'start:cluster': 'sl-run server/server.js',
+  'build': 'npm run build:idt',
+  'idt:build': 'node idt.js build',
+  'idt:test': 'node idt.js test',
+  'idt:debug': 'node idt.js debug',
+  'idt:run': 'node idt.js run',
+  'idt:deploy': 'node idt.js deploy',
+  'idt:install': 'node idt.js install'
 };
 
 const extraDependenciesForYoGenerated = {
-  "strong-supervisor": "^6.2.0"
+  'strong-supervisor': '^6.2.0'
 };
 
 const extraDevDependenciesForYoGenerated = {
-  "request": "^2.82.0",
-  "chalk": "^1.1.3",
-  "prompt-confirm": "^1.2.0"
+  'request': '^2.82.0',
+  'chalk': '^1.1.3',
+  'prompt-confirm': '^1.2.0'
 };
 
 module.exports = class extends Generator {
@@ -72,17 +72,17 @@ module.exports = class extends Generator {
     this.skipPrompt = true;
     let bluemix_ok= this._sanitizeOption(this.options, OPTION_BLUEMIX);
     this._sanitizeOption(this.options, OPTION_SPEC)
-    
-    if ( ! (bluemix_ok )) throw ("Must specify bluemix parameter");
 
-    if ( typeof this.options.bluemix.quiet == "undefined" || ! this.options.bluemix.quiet ) {
-      logger.info("Package info ::", Bundle.name, Bundle.version);
+    if ( ! (bluemix_ok )) throw ('Must specify bluemix parameter');
+
+    if ( typeof this.options.bluemix.quiet == 'undefined' || ! this.options.bluemix.quiet ) {
+      logger.info('Package info ::', Bundle.name, Bundle.version);
     }
 
     let appName = this.options.bluemix.name || this.options.spec.appname;
     this.options.sanitizedAppName = this._sanitizeAppName(appName);
     this.options.genSwagger= false;
-    this.options.openApiFileType= "yaml"; // default
+    this.options.openApiFileType= 'yaml'; // default
 
     this.options.parsedSwagger = undefined;
     let formatters = {
@@ -186,10 +186,10 @@ module.exports = class extends Generator {
       this.fs.writeJSON(this.destinationPath('package.json'), packageJSON);
     }
 
-    // Create node_modules_linux, which is used as 
+    // Create node_modules_linux, which is used as
     // a docker mount point source folder. By creating
-    // it now, we avoid permission problem later for 
-    // 'idt build'. 
+    // it now, we avoid permission problem later for
+    // 'idt build'.
     let dir = process.cwd() + '/node_modules_linux';
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, 0o755);
@@ -212,18 +212,18 @@ module.exports = class extends Generator {
   _sanitizeOption(options, name) {
     let optionValue = options[name];
     if (!optionValue) {
-      logger.warn("Missing", name, "parameter");
+      logger.warn('Missing', name, 'parameter');
       return false;
     }
 
     try {
-      this.options[name] = typeof(this.options[name]) === "string" ?
+      this.options[name] = typeof(this.options[name]) === 'string' ?
       JSON.parse(this.options[name]) : this.options[name];
 
-      return true;    
+      return true;
     } catch (e) {
       logger.error(e);
-      throw name + " parameter is expected to be a valid stringified JSON object";
+      throw name + ' parameter is expected to be a valid stringified JSON object';
     }
   }
 };
