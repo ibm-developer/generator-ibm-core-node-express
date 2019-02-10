@@ -38,10 +38,10 @@ describe('Demonstrating testing with various assertion methods', function() {
 
   describe('Testing with should', function() {
     it('Tests type using should', function() {
-      "a".should.be.a("string");
+      'a'.should.be.a('string');
     });
     it('Tests value using should', function() {
-      "a".should.equal("a");
+      'a'.should.equal('a');
     });
     it('Tests length using expect', function() {
       [1,2,3].should.have.lengthOf(3);
