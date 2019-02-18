@@ -1,6 +1,6 @@
-var assert = require('chai').assert;
-var expect = require('chai').expect;
-var should = require('chai').should();
+const assert = require('chai').assert;
+const expect = require('chai').expect;
+const should = require('chai').should();
 
 // Below code demonstrates using various methods of testing
 describe('Demonstrating testing with various assertion methods', function() {
@@ -48,7 +48,7 @@ describe('Demonstrating testing with various assertion methods', function() {
       'asd'.should.have.lengthOf(3);
     });
     it('Tests property existence and length using should', function() {
-      var obj = {
+      const obj = {
         arr:[1,2,3]
       };
       obj.should.have.property('arr').with.lengthOf(3);
