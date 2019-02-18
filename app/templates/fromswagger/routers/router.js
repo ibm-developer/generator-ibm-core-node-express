@@ -15,7 +15,5 @@ module.exports = function(app, basepath) {
 {{else}}
   app.use(router);
 {{/if}}
-
 {{/if}}
 }
-

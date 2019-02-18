@@ -435,6 +435,16 @@ describe('core-node-express:app integration test with openApiServices', function
     assert.fileContent('server/routers/index.js', 'require(\'./public\')(app);');
   })
 
+  it('Error parsing openApiServices', function (done) {
+    helpers.run(path.join(__dirname, '../app'))
+      .withOptions({
+        spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort, isDeployableContainer: true }),
+        bluemix: JSON.stringify({ name: PROJECT_NAME, openApiServers: [{ spec: 'not-a-real-json' }] })
+      })
+      .toPromise()
+      .then(() => done('Invalid openApiServices specs'))
+      .catch(() => done());
+  });
 });
 
 describe('core-node-express:app integration test as microservice', function () {
@@ -497,4 +507,24 @@ describe('core-node-express:app blank integration test with openApiServices', fu
     assert.fileContent('server/routers/index.js', 'require(\'./public\')(app);');
   })
 
+});
+
+describe('core-node-express:app invalid  parameters', function () {
+  this.timeout(150000);
+  it('Invalid json in bluemix parameter', function (done) {
+    helpers.run(path.join(__dirname, '../app'))
+      .withOptions({
+        bluemix: '{"name": "batman", "not-a-valid-json": {}'
+      })
+      .toPromise()
+      .then(() => done('Invalid parameters error ignored'))
+      .catch(() => done());
+  });
+  it('Missing bluemix parameter', function (done) {
+    helpers.run(path.join(__dirname, '../app'))
+      .withOptions({})
+      .toPromise()
+      .then(() => done('Invalid parameters error ignored'))
+      .catch(() => done());
+  });
 });
