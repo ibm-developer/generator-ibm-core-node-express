@@ -1,5 +1,5 @@
-var expect = require('chai').expect;
-var http = require('http');
+const expect = require('chai').expect;
+const http = require('http');
 
 before(function(done){
   require(process.cwd() + '/server/server');
@@ -12,15 +12,15 @@ before(function(done){
 {{#testing route method ../basepath}}
 	{{/testing}}
     it('Testing GET for {{route}} route',function(done){
-      var responseString = '';
+      let responseString = '';
 
-       var options = {
+       const options = {
           host: 'localhost',
           port: process.env.PORT || 3000,
           {{#path route ../basepath}}{{/path}}
        };
 
-       var callback = function(response){
+       const callback = function(response){
          response.on('data', function (chunk) {
          responseString += chunk;
        });

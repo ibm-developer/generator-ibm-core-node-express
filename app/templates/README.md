@@ -2,7 +2,7 @@
 
 A generated IBM Cloud application
 
-[![](https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg)](https://bluemix.net)
+[![](https://img.shields.io/badge/IBM_Cloud-powered-blue.svg)](https://cloud.ibm.com)
 
 ## Run locally as Node.js application
 

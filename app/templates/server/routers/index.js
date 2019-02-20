@@ -8,11 +8,9 @@ module.exports = function(app, server){
     const basepath = '';
         {{/if}}
     {{/if}}
-
     {{#if genSwagger}}
     require('./swagger')(app);
     {{/if}}
-
     {{#if parsedSwagger}}
     {{#resourcePath parsedSwagger}}
     {{/resourcePath}}
