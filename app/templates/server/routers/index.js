@@ -3,16 +3,14 @@
 module.exports = function(app, server){
     {{#if parsedSwagger}}
         {{#if parsedSwagger.basepath}}
-    const basepath = "{{parsedSwagger.basepath}}";
+    const basepath = '{{parsedSwagger.basepath}}';
         {{else}}
     const basepath = '';
         {{/if}}
     {{/if}}
-    
     {{#if genSwagger}}
     require('./swagger')(app);
     {{/if}}
-    
     {{#if parsedSwagger}}
     {{#resourcePath parsedSwagger}}
     {{/resourcePath}}

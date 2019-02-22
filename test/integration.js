@@ -31,8 +31,13 @@ describe('core-node-express:app integration test with custom spec', function () 
     // Mock the options, set up an output folder and run the generator
     return helpers.run(path.join(__dirname, '../app'))
       .withOptions({
-        bluemix: JSON.stringify({ name: PROJECT_NAME }),
-        spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort })
+        bluemix: JSON.stringify({
+          name: PROJECT_NAME
+        }),
+        spec: JSON.stringify({
+          appname: 'testApp',
+          port: common.defaultPort
+        })
       })
       .toPromise(); // Get a Promise back when the generator finishes
   });
@@ -58,7 +63,9 @@ describe('core-node-express:app integration test with custom spec', function () 
 
   describe(common.file.local, function () {
     it('contains the custom port', function () {
-      assert.jsonFileContent(common.file.local, { port: common.defaultPort });
+      assert.jsonFileContent(common.file.local, {
+        port: common.defaultPort
+      });
     });
   });
 
@@ -77,16 +84,17 @@ describe('core-node-express:app integration test with custom spec', function () 
           "test": "nyc mocha --exit"
         },
         "dependencies": {
-          "appmetrics-dash": "^4.0.0",
+          "appmetrics-dash": "^4.1.0",
           "appmetrics-prometheus": "^2.0.0",
-          "body-parser": "^1.17.2",
-          "express": "^4.15.3",
-          "log4js": "^3.0.5"
+          "appmetrics-zipkin": "^1.1.1",
+          "body-parser": "^1.18.3",
+          "express": "^4.16.4",
+          "log4js": "^4.0.2"
         },
         "devDependencies": {
-          "chai": "^4.0.0",
-          "mocha": "^5.2.0",
-          "nyc": "^13.1.0"
+          "chai": "^4.2.0",
+          "mocha": "^6.0.0",
+          "nyc": "^13.3.0"
         }
       });
     });
@@ -99,7 +107,7 @@ describe('core-node-express:app integration test with custom spec', function () 
 
     it('contains IBM Cloud badge', function () {
       assert.fileContent(common.file.README_md,
-        '[![](https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg)](https://bluemix.net)');
+        '[![](https://img.shields.io/badge/IBM_Cloud-powered-blue.svg)](https://cloud.ibm.com)');
     });
   });
 
@@ -124,7 +132,10 @@ describe('core-node-express:app integration test with custom bluemix.fromYo flag
     // Mock the options, set up an output folder and run the generator
     return helpers.run(path.join(__dirname, '../app'))
       .withOptions({
-        bluemix: JSON.stringify({ name: PROJECT_NAME, fromYo: true })
+        bluemix: JSON.stringify({
+          name: PROJECT_NAME,
+          fromYo: true
+        })
       })
       .toPromise(); // Get a Promise back when the generator finishes
   });
@@ -142,7 +153,9 @@ describe('core-node-express:app integration test with custom bluemix.fromYo flag
 
   describe(common.file.local, function () {
     it('contains the default port', function () {
-      assert.jsonFileContent(common.file.local, { port: 3000 });
+      assert.jsonFileContent(common.file.local, {
+        port: 3000
+      });
     });
 
   });
@@ -169,17 +182,17 @@ describe('core-node-express:app integration test with custom bluemix.fromYo flag
           "idt:install": "node idt.js install"
         },
         "dependencies": {
-          "appmetrics-dash": "^4.0.0",
+          "appmetrics-dash": "^4.1.0",
           "appmetrics-prometheus": "^2.0.0",
-          "body-parser": "^1.17.2",
-          "express": "^4.15.3",
-          "log4js": "^3.0.5",
+          "body-parser": "^1.18.3",
+          "express": "^4.16.4",
+          "log4js": "^4.0.2",
           "strong-supervisor": "^6.2.0"
         },
         "devDependencies": {
-          "chai": "^4.0.0",
-          "mocha": "^5.2.0",
-          "nyc": "^13.1.0"
+          "chai": "^4.2.0",
+          "mocha": "^6.0.0",
+          "nyc": "^13.3.0"
         }
       });
     });
@@ -192,7 +205,7 @@ describe('core-node-express:app integration test with custom bluemix.fromYo flag
 
     it('contains IBM Cloud badge', function () {
       assert.fileContent(common.file.README_md,
-        '[![](https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg)](https://bluemix.net)');
+        '[![](https://img.shields.io/badge/IBM_Cloud-powered-blue.svg)](https://cloud.ibm.com)');
     });
   });
 
@@ -229,7 +242,9 @@ describe('core-node-express:app integration test with custom bluemix', function 
     // Mock the options, set up an output folder and run the generator
     return helpers.run(path.join(__dirname, '../app'))
       .withOptions({
-        bluemix: JSON.stringify({ name: PROJECT_NAME })
+        bluemix: JSON.stringify({
+          name: PROJECT_NAME
+        })
       })
       .toPromise(); // Get a Promise back when the generator finishes
   });
@@ -246,7 +261,9 @@ describe('core-node-express:app integration test with custom bluemix', function 
 
   describe(common.file.local, function () {
     it('contains the default port', function () {
-      assert.jsonFileContent(common.file.local, { port: 3000 });
+      assert.jsonFileContent(common.file.local, {
+        port: 3000
+      });
     });
   });
 
@@ -264,16 +281,16 @@ describe('core-node-express:app integration test with custom bluemix', function 
           "test": "nyc mocha --exit"
         },
         "dependencies": {
-          "appmetrics-dash": "^4.0.0",
+          "appmetrics-dash": "^4.1.0",
           "appmetrics-prometheus": "^2.0.0",
-          "body-parser": "^1.17.2",
-          "express": "^4.15.3",
-          "log4js": "^3.0.5"
+          "body-parser": "^1.18.3",
+          "express": "^4.16.4",
+          "log4js": "^4.0.2"
         },
         "devDependencies": {
-          "chai": "^4.0.0",
-          "mocha": "^5.2.0",
-          "nyc": "^13.1.0"
+          "chai": "^4.2.0",
+          "mocha": "^6.0.0",
+          "nyc": "^13.3.0"
         }
       });
     });
@@ -286,7 +303,7 @@ describe('core-node-express:app integration test with custom bluemix', function 
 
     it('contains IBM Cloud badge', function () {
       assert.fileContent(common.file.README_md,
-        '[![](https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg)](https://bluemix.net)');
+        '[![](https://img.shields.io/badge/IBM_Cloud-powered-blue.svg)](https://cloud.ibm.com)');
     });
   });
 
@@ -323,8 +340,12 @@ describe('core-node-express:app integration test with custom bluemix and spec', 
     // Mock the options, set up an output folder and run the generator
     return helpers.run(path.join(__dirname, '../app'))
       .withOptions({
-        bluemix: JSON.stringify({ name: PROJECT_NAME }),
-        spec: JSON.stringify({ port: common.defaultPort })
+        bluemix: JSON.stringify({
+          name: PROJECT_NAME
+        }),
+        spec: JSON.stringify({
+          port: common.defaultPort
+        })
       })
       .toPromise(); // Get a Promise back when the generator finishes
   });
@@ -341,7 +362,9 @@ describe('core-node-express:app integration test with custom bluemix and spec', 
 
   describe(common.file.local, function () {
     it('contains the custom port', function () {
-      assert.jsonFileContent(common.file.local, { port: common.defaultPort });
+      assert.jsonFileContent(common.file.local, {
+        port: common.defaultPort
+      });
     });
   });
 
@@ -359,16 +382,16 @@ describe('core-node-express:app integration test with custom bluemix and spec', 
           "test": "nyc mocha --exit"
         },
         "dependencies": {
-          "appmetrics-dash": "^4.0.0",
+          "appmetrics-dash": "^4.1.0",
           "appmetrics-prometheus": "^2.0.0",
-          "body-parser": "^1.17.2",
-          "express": "^4.15.3",
-          "log4js": "^3.0.5"
+          "body-parser": "^1.18.3",
+          "express": "^4.16.4",
+          "log4js": "^4.0.2"
         },
         "devDependencies": {
-          "chai": "^4.0.0",
-          "mocha": "^5.2.0",
-          "nyc": "^13.1.0"
+          "chai": "^4.2.0",
+          "mocha": "^6.0.0",
+          "nyc": "^13.3.0"
         }
       });
     });
@@ -381,7 +404,7 @@ describe('core-node-express:app integration test with custom bluemix and spec', 
 
     it('contains IBM Cloud badge', function () {
       assert.fileContent(common.file.README_md,
-        '[![](https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg)](https://bluemix.net)');
+        '[![](https://img.shields.io/badge/IBM_Cloud-powered-blue.svg)](https://cloud.ibm.com)');
     });
   });
 
@@ -410,8 +433,17 @@ describe('core-node-express:app integration test with openApiServices', function
     let swagStr = JSON.stringify(swagger);
     return helpers.run(path.join(__dirname, '../app'))
       .withOptions({
-        spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort, isDeployableContainer: true }),
-        bluemix: JSON.stringify({ name: PROJECT_NAME, openApiServers: [{ spec: swagStr }] })
+        spec: JSON.stringify({
+          appname: 'testApp',
+          port: common.defaultPort,
+          isDeployableContainer: true
+        }),
+        bluemix: JSON.stringify({
+          name: PROJECT_NAME,
+          openApiServers: [{
+            spec: swagStr
+          }]
+        })
       })
       .toPromise(); // Get a Promise back when the generator finishes
   });
@@ -435,6 +467,25 @@ describe('core-node-express:app integration test with openApiServices', function
     assert.fileContent('server/routers/index.js', 'require(\'./public\')(app);');
   })
 
+  it('Error parsing openApiServices', function (done) {
+    helpers.run(path.join(__dirname, '../app'))
+      .withOptions({
+        spec: JSON.stringify({
+          appname: 'testApp',
+          port: common.defaultPort,
+          isDeployableContainer: true
+        }),
+        bluemix: JSON.stringify({
+          name: PROJECT_NAME,
+          openApiServers: [{
+            spec: 'not-a-real-json'
+          }]
+        })
+      })
+      .toPromise()
+      .then(() => done('Invalid openApiServices specs'))
+      .catch(() => done());
+  });
 });
 
 describe('core-node-express:app integration test as microservice', function () {
@@ -443,8 +494,14 @@ describe('core-node-express:app integration test as microservice', function () {
   before(function () {
     return helpers.run(path.join(__dirname, '../app'))
       .withOptions({
-        spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort, applicationType: 'MS' }),
-        bluemix: JSON.stringify({ name: PROJECT_NAME })
+        spec: JSON.stringify({
+          appname: 'testApp',
+          port: common.defaultPort,
+          applicationType: 'MS'
+        }),
+        bluemix: JSON.stringify({
+          name: PROJECT_NAME
+        })
       })
       .toPromise(); // Get a Promise back when the generator finishes
   });
@@ -467,8 +524,18 @@ describe('core-node-express:app microservice integration test with openApiServic
     let swagStr = JSON.stringify(swagger);
     return helpers.run(path.join(__dirname, '../app'))
       .withOptions({
-        spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort, isDeployableContainer: true, applicationType: 'MS' }),
-        bluemix: JSON.stringify({ name: PROJECT_NAME, openApiServers: [{ spec: swagStr }] })
+        spec: JSON.stringify({
+          appname: 'testApp',
+          port: common.defaultPort,
+          isDeployableContainer: true,
+          applicationType: 'MS'
+        }),
+        bluemix: JSON.stringify({
+          name: PROJECT_NAME,
+          openApiServers: [{
+            spec: swagStr
+          }]
+        })
       })
       .toPromise(); // Get a Promise back when the generator finishes
   });
@@ -487,8 +554,18 @@ describe('core-node-express:app blank integration test with openApiServices', fu
     let swagStr = JSON.stringify(swagger);
     return helpers.run(path.join(__dirname, '../app'))
       .withOptions({
-        spec: JSON.stringify({ appname: 'testApp', port: common.defaultPort, isDeployableContainer: true, applicationType: 'BLANK' }),
-        bluemix: JSON.stringify({ name: PROJECT_NAME, openApiServers: [{ spec: swagStr }] })
+        spec: JSON.stringify({
+          appname: 'testApp',
+          port: common.defaultPort,
+          isDeployableContainer: true,
+          applicationType: 'BLANK'
+        }),
+        bluemix: JSON.stringify({
+          name: PROJECT_NAME,
+          openApiServers: [{
+            spec: swagStr
+          }]
+        })
       })
       .toPromise(); // Get a Promise back when the generator finishes
   });
@@ -497,4 +574,24 @@ describe('core-node-express:app blank integration test with openApiServices', fu
     assert.fileContent('server/routers/index.js', 'require(\'./public\')(app);');
   })
 
+});
+
+describe('core-node-express:app invalid  parameters', function () {
+  this.timeout(150000);
+  it('Invalid json in bluemix parameter', function (done) {
+    helpers.run(path.join(__dirname, '../app'))
+      .withOptions({
+        bluemix: '{"name": "batman", "not-a-valid-json": {}'
+      })
+      .toPromise()
+      .then(() => done('Invalid parameters error ignored'))
+      .catch(() => done());
+  });
+  it('Missing bluemix parameter', function (done) {
+    helpers.run(path.join(__dirname, '../app'))
+      .withOptions({})
+      .toPromise()
+      .then(() => done('Invalid parameters error ignored'))
+      .catch(() => done());
+  });
 });

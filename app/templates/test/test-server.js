@@ -1,5 +1,5 @@
-var expect = require('chai').expect;
-var http = require('http');
+const expect = require('chai').expect;
+const http = require('http');
 
 // Below code demonstrates using various methods of testing
 describe('Testing Server', function() {
@@ -12,15 +12,15 @@ describe('Testing Server', function() {
   });
 
   it('Health endpoint shows status up', function(done){
-    var responseString = '';
+    let responseString = '';
 
-    var options = {
+    const options = {
       host: 'localhost',
       port: process.env.PORT || 3000,
       path: '/health'
     };
 
-    var callback = function(response){
+    const callback = function(response){
       response.on('data', function (chunk) {
         responseString += chunk;
       });
