@@ -25,6 +25,7 @@
     "testkube": "npm run mocha test/test-kubernetes.js",
     "lint": "eslint .",
     "mocha": "nyc --reporter=lcov mocha --reporter mocha-multi-reporters --reporter-options configFile=config.json",
+    "testinsights": "npm run mocha",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "version": "standard-version"
   },
