@@ -27,6 +27,6 @@ env:
   # below are idra's necessary environment variables to report to devops-insights
   # IBM_CLOUD_API_KEY and TOOLCHAIN_ID need to be defined from travis GUI
   - ORGANIZATION_NAME=devops-insights
-  - LOGICAL_APP_NAME=generator-ibm-core-node-express
+  - LOGICAL_APP_NAME=generator-ibm-core-node-express-test
   - GIT_URL=https://github.com/ibm-developer/generator-ibm-core-node-express
   - DEVOPS_REPORT_DIR=/tmp/devops_insights/
