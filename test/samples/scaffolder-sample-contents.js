@@ -201,7 +201,7 @@ class scaffolderSample {
       "sdks": [
         {
           "name": "PetStore",
-          "spec": "http://petstore.swagger.io/v2/swagger.json"
+          "spec": "https://petstore.swagger.io/v2/swagger.json"
         }
       ],
       "speechToText": {
@@ -332,3 +332,4 @@ class scaffolderSample {
 module.exports = {
   scaffolderSample : scaffolderSample
 };
+
