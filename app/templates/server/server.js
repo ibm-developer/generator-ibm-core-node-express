@@ -10,12 +10,13 @@ require('appmetrics-prometheus').attach();
 const appName = require('./../package').name;
 const http = require('http');
 const express = require('express');
+const bodyParser = require('body-parser');
 const log4js = require('log4js');
 const localConfig = require('./config/local.json');
 const path = require('path');
 
 const logger = log4js.getLogger(appName);
-logger.level = process.env.LOG_LEVEL || 'info'
+logger.level = process.env.LOG_LEVEL || 'info';
 const app = express();
 const server = http.createServer(app);
 
@@ -23,6 +24,9 @@ app.use(log4js.connectLogger(logger, { level: logger.level }));
 const serviceManager = require('./services/service-manager');
 require('./services/index')(app);
 require('./routers/index')(app, server);
+
+// req.body will be available for Content-Type=application/json
+app.use(bodyParser.json());
 
 // Add your code here
 
