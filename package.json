@@ -12,10 +12,10 @@
   ],
   "dependencies": {
     "chalk": "^2.4.2",
-    "handlebars": "^4.1.0",
+    "handlebars": "^4.1.2",
     "ibm-openapi-support": "^0.0.13",
     "log4js": "^4.0.2",
-    "npm": "^6.8.0",
+    "npm": "^6.11.2",
     "yeoman-generator": "^3.2.0"
   },
   "scripts": {
@@ -33,7 +33,7 @@
     "coveralls": "^3.0.2",
     "eslint": "^5.14.1",
     "eslint-plugin-ejs": "^0.0.2",
-    "mocha": "^6.0.2",
+    "mocha": "^6.2.0",
     "mocha-multi-reporters": "^1.1.7",
     "nyc": "^13.3.0",
     "standard-version": "^5.0.0",
