@@ -2,13 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [3.1.3](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v3.1.2...v3.1.3) (2019-08-28)
-
-
-### Bug Fixes
-
-* npm audit of dependencies ([925b11e](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/925b11e))
-* use JSON body parser ([0c94741](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/0c94741))
+## [3.1.4](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v3.1.3...v3.1.4) (2019-09-03)
 
 
 
