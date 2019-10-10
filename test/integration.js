@@ -84,9 +84,6 @@ describe('core-node-express:app integration test with custom spec', function () 
           "test": "nyc mocha --exit"
         },
         "dependencies": {
-          "appmetrics-dash": "^4.1.0",
-          "appmetrics-prometheus": "^2.0.0",
-          "appmetrics-zipkin": "^1.1.1",
           "body-parser": "^1.18.3",
           "express": "^4.16.4",
           "log4js": "^4.0.2"
@@ -182,8 +179,6 @@ describe('core-node-express:app integration test with custom bluemix.fromYo flag
           "idt:install": "node idt.js install"
         },
         "dependencies": {
-          "appmetrics-dash": "^4.1.0",
-          "appmetrics-prometheus": "^2.0.0",
           "body-parser": "^1.18.3",
           "express": "^4.16.4",
           "log4js": "^4.0.2",
@@ -212,18 +207,6 @@ describe('core-node-express:app integration test with custom bluemix.fromYo flag
   describe(common.file.server_js, () => {
     it('contains custom app name', () => {
       assert.fileContent(common.file.server_js, 'logger.info(`ProjectName listening on http://localhost:${port}`);')
-    });
-  });
-
-  describe(common.file.server_js, () => {
-    it('contains appmetrics-dash attach', () => {
-      assert.fileContent(common.file.server_js, "require('appmetrics-dash').attach();")
-    });
-  });
-
-  describe(common.file.server_js, () => {
-    it('contains appmetrics-prometheus attach', () => {
-      assert.fileContent(common.file.server_js, "require('appmetrics-prometheus').attach();")
     });
   });
 
@@ -281,8 +264,6 @@ describe('core-node-express:app integration test with custom bluemix', function 
           "test": "nyc mocha --exit"
         },
         "dependencies": {
-          "appmetrics-dash": "^4.1.0",
-          "appmetrics-prometheus": "^2.0.0",
           "body-parser": "^1.18.3",
           "express": "^4.16.4",
           "log4js": "^4.0.2"
@@ -310,18 +291,6 @@ describe('core-node-express:app integration test with custom bluemix', function 
   describe(common.file.server_js, () => {
     it('contains custom app name', () => {
       assert.fileContent(common.file.server_js, 'logger.info(`ProjectName listening on http://localhost:${port}`);')
-    });
-  });
-
-  describe(common.file.server_js, () => {
-    it('contains appmetrics-dash attach', () => {
-      assert.fileContent(common.file.server_js, "require('appmetrics-dash').attach();")
-    });
-  });
-
-  describe(common.file.server_js, () => {
-    it('contains appmetrics-prometheus attach', () => {
-      assert.fileContent(common.file.server_js, "require('appmetrics-prometheus').attach();")
     });
   });
 
@@ -382,8 +351,6 @@ describe('core-node-express:app integration test with custom bluemix and spec', 
           "test": "nyc mocha --exit"
         },
         "dependencies": {
-          "appmetrics-dash": "^4.1.0",
-          "appmetrics-prometheus": "^2.0.0",
           "body-parser": "^1.18.3",
           "express": "^4.16.4",
           "log4js": "^4.0.2"
