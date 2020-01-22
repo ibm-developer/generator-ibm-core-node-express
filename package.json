@@ -12,10 +12,10 @@
   ],
   "dependencies": {
     "chalk": "^2.4.2",
-    "handlebars": "^4.4.3",
+    "handlebars": "^4.7.2",
     "ibm-openapi-support": "^0.0.13",
     "log4js": "^4.0.2",
-    "npm": "^6.11.2",
+    "npm": "^6.13.6",
     "yeoman-generator": "^3.2.0"
   },
   "scripts": {
