@@ -15,7 +15,7 @@
     "handlebars": "^4.7.2",
     "ibm-openapi-support": "^0.0.13",
     "log4js": "^4.0.2",
-    "npm": "^6.13.6",
+    "npm": "^6.13.7",
     "yeoman-generator": "^3.2.0"
   },
   "scripts": {
