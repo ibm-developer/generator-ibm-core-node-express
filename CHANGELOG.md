@@ -2,12 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-# [3.2.0](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v3.1.5...v3.2.0) (2019-10-10)
-
-
-### Features
-
-* **server:** remove app metrics ([a703da0](https://github.com/ibm-developer/generator-ibm-core-node-express/commit/a703da0))
+## [3.2.1](https://github.com/ibm-developer/generator-ibm-core-node-express/compare/v3.2.0...v3.2.1) (2020-02-04)
 
 
 

@@ -1,6 +1,6 @@
 {
   "name": "generator-ibm-core-node-express",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "Yeoman generator for core node express application",
   "license": "Apache-2.0",
   "keywords": [
